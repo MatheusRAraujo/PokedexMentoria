@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CoordinatorDelegate: AnyObject {
-    func didFinishChilds()
+    func didFinishChild()
 }
 
 protocol Coordinator: CoordinatorDelegate {
@@ -18,7 +18,7 @@ protocol Coordinator: CoordinatorDelegate {
     var navigation: UINavigationController? { get }
     
     func route(from coordinator: Coordinator, present: CoordinatorPresent)
-    func start()
+    func start() -> UIViewController
     func didFinish()
 }
 
@@ -29,9 +29,17 @@ extension Coordinator {
     }
 
     func didFinish() {
-        parentCoordinatorDelegate?.didFinishChilds()
+        parentCoordinatorDelegate?.didFinishChild()
         parentCoordinatorDelegate = nil
         viewController = nil
+    }
+    
+    func route(from coordinator: Coordinator, present: CoordinatorPresent) {
+        
+        coordinator.parentCoordinatorDelegate = self
+        childCoordinator = coordinator
+        let vc = coordinator.start()
+        viewController?.present(vc, animated: true)
     }
 
 }
