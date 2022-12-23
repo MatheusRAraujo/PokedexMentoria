@@ -15,7 +15,7 @@ protocol Coordinator: CoordinatorDelegate {
     var parentCoordinatorDelegate: CoordinatorDelegate? { get set }
     var childCoordinator: Coordinator? { get set }
     var viewController: UIViewController? { get set }
-    var navigation: UINavigationController? { get }
+    var navigationController: UINavigationController? { get }
     
     func route(from coordinator: Coordinator, present: CoordinatorPresent)
     func start() -> UIViewController
@@ -24,7 +24,7 @@ protocol Coordinator: CoordinatorDelegate {
 
 extension Coordinator {
     
-    var navigation: UINavigationController? {
+    var navigationController: UINavigationController? {
         viewController?.navigationController
     }
 
@@ -33,13 +33,19 @@ extension Coordinator {
         parentCoordinatorDelegate = nil
         viewController = nil
     }
-    
+
     func route(from coordinator: Coordinator, present: CoordinatorPresent) {
-        
+
         coordinator.parentCoordinatorDelegate = self
         childCoordinator = coordinator
-        let vc = coordinator.start()
-        viewController?.present(vc, animated: true)
+        let nextViewController = coordinator.start()
+
+        switch present {
+        case .present:
+            viewController?.present(nextViewController, animated: true)
+        case .push:
+            navigationController?.pushViewController(nextViewController, animated: true)
+        }
     }
 
 }
