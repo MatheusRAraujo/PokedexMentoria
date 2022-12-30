@@ -14,13 +14,35 @@ class AppCoordinator: Coordinator {
     var viewController: UIViewController?
     
     func start() -> UIViewController {
-        ViewController()
+        let vc = HomeViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.coordinatorDelegate = self
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        nav.navigationBar.backgroundColor = .cyan
+        viewController = nav
+        return nav
     }
     
     func didFinishChild() {
         childCoordinator = nil
     }
     
+    func goToFirstView() {
+        let firstCoodinator = FirstViewCoordinator()
+        route(from: firstCoodinator, present: .present)
+    }
+    
+    func goToSecondView() {
+        let firstCoodinator = SecondViewCoordinator()
+        route(from: firstCoodinator, present: .push)
+    }
+    
+    deinit {
+        #if DEBUG
+        print("\(Self.self) desalocado")
+        #endif
+    }
     
 }
 

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  PokedexMentoria
 //
 //  Created by Matheus Rodrigues Araujo on 23/12/22.
@@ -7,7 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol HomeCoordinatorDelegate: DidFinishCoordinatorDelegate {
+    func goToFirstView()
+    func goToSecondView()
+}
+
+class HomeViewController: ViewController {
+    
+    private var homeCoordinatorDelegate: HomeCoordinatorDelegate? {
+        coordinatorDelegate as? HomeCoordinatorDelegate
+    }
     
     private lazy var customView: UIView = {
         let view = UIView()
@@ -43,10 +52,12 @@ class ViewController: UIViewController {
     
     @objc private func presentScreen() {
         print("present button tapped")
+        homeCoordinatorDelegate?.goToFirstView()
     }
     
     @objc private func pushScreen() {
         print("Push button pressed")
+        homeCoordinatorDelegate?.goToSecondView()
     }
     
     func makeLayout() {

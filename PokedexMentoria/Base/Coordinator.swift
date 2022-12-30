@@ -7,25 +7,28 @@
 
 import UIKit
 
-protocol CoordinatorDelegate: AnyObject {
+protocol DidFinishCoordinatorDelegate {
+    func didFinish()
+}
+
+protocol ParentCoordinatorDelegate: AnyObject {
     func didFinishChild()
 }
 
-protocol Coordinator: CoordinatorDelegate {
-    var parentCoordinatorDelegate: CoordinatorDelegate? { get set }
+protocol Coordinator: ParentCoordinatorDelegate, DidFinishCoordinatorDelegate {
+    var parentCoordinatorDelegate: ParentCoordinatorDelegate? { get set }
     var childCoordinator: Coordinator? { get set }
     var viewController: UIViewController? { get set }
     var navigationController: UINavigationController? { get }
     
     func route(from coordinator: Coordinator, present: CoordinatorPresent)
     func start() -> UIViewController
-    func didFinish()
 }
 
 extension Coordinator {
     
     var navigationController: UINavigationController? {
-        viewController?.navigationController
+        viewController as? UINavigationController ?? viewController?.navigationController
     }
 
     func didFinish() {
@@ -42,7 +45,8 @@ extension Coordinator {
 
         switch present {
         case .present:
-            viewController?.present(nextViewController, animated: true)
+            let newNav = UINavigationController(rootViewController: nextViewController)
+            navigationController?.present(newNav, animated: true)
         case .push:
             navigationController?.pushViewController(nextViewController, animated: true)
         }
