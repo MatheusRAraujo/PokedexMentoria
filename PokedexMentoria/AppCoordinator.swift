@@ -13,11 +13,11 @@ final class AppCoordinator: Coordinator {
     var viewController: UIViewController?
     
     func start() -> UIViewController {
-        let vc = HomeViewController()
-        vc.homeCoordinatorDelegate = self
-        let nav = UINavigationController(rootViewController: vc)
-        viewController = nav
-        return nav
+        let homeViewController = HomeViewController()
+        homeViewController.homeCoordinatorDelegate = self
+        let newNavigation = UINavigationController(rootViewController: homeViewController)
+        viewController = newNavigation
+        return newNavigation
     }
     
 }
