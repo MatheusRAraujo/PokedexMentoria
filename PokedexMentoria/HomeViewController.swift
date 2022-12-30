@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol HomeCoordinatorDelegate: DidFinishCoordinatorDelegate {
+protocol HomeCoordinatorDelegate: AnyObject {
     func goToFirstView()
     func goToSecondView()
 }
 
-class HomeViewController: ViewController {
+final class HomeViewController: UIViewController {
     
-    private var homeCoordinatorDelegate: HomeCoordinatorDelegate? {
-        coordinatorDelegate as? HomeCoordinatorDelegate
-    }
+    weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
     
     private lazy var customView: UIView = {
         let view = UIView()

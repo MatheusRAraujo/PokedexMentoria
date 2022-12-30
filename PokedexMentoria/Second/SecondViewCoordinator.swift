@@ -8,13 +8,14 @@
 import UIKit
 
 class SecondViewCoordinator: Coordinator {
-    
-    weak var parentCoordinatorDelegate: ParentCoordinatorDelegate?
+
     var childCoordinator: Coordinator?
     var viewController: UIViewController?
     
     func start() -> UIViewController {
-        SecondViewController()
+        let view = SecondViewController()
+        self.viewController = view
+        return view
     }
     
     func didFinishChild() {

@@ -7,16 +7,7 @@
 
 import UIKit
 
-protocol DidFinishCoordinatorDelegate {
-    func didFinish()
-}
-
-protocol ParentCoordinatorDelegate: AnyObject {
-    func didFinishChild()
-}
-
-protocol Coordinator: ParentCoordinatorDelegate, DidFinishCoordinatorDelegate {
-    var parentCoordinatorDelegate: ParentCoordinatorDelegate? { get set }
+protocol Coordinator: AnyObject {
     var childCoordinator: Coordinator? { get set }
     var viewController: UIViewController? { get set }
     var navigationController: UINavigationController? { get }
@@ -31,15 +22,8 @@ extension Coordinator {
         viewController as? UINavigationController ?? viewController?.navigationController
     }
 
-    func didFinish() {
-        parentCoordinatorDelegate?.didFinishChild()
-        parentCoordinatorDelegate = nil
-        viewController = nil
-    }
-
     func route(from coordinator: Coordinator, present: CoordinatorPresent) {
 
-        coordinator.parentCoordinatorDelegate = self
         childCoordinator = coordinator
         let nextViewController = coordinator.start()
 

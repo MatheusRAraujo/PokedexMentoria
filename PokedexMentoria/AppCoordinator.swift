@@ -7,19 +7,15 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
-    
-    weak var parentCoordinatorDelegate: CoordinatorDelegate?
+final class AppCoordinator: Coordinator {
+
     var childCoordinator: Coordinator?
     var viewController: UIViewController?
     
     func start() -> UIViewController {
         let vc = HomeViewController()
-        vc.modalPresentationStyle = .fullScreen
-        vc.coordinatorDelegate = self
+        vc.homeCoordinatorDelegate = self
         let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        nav.navigationBar.backgroundColor = .cyan
         viewController = nav
         return nav
     }
@@ -27,6 +23,10 @@ class AppCoordinator: Coordinator {
     func didFinishChild() {
         childCoordinator = nil
     }
+    
+}
+
+extension AppCoordinator: HomeCoordinatorDelegate {
     
     func goToFirstView() {
         let firstCoodinator = FirstViewCoordinator()
@@ -37,13 +37,4 @@ class AppCoordinator: Coordinator {
         let firstCoodinator = SecondViewCoordinator()
         route(from: firstCoodinator, present: .push)
     }
-    
-    deinit {
-        #if DEBUG
-        print("\(Self.self) desalocado")
-        #endif
-    }
-    
 }
-
-
