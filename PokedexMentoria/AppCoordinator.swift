@@ -20,21 +20,8 @@ final class AppCoordinator: Coordinator {
         return nav
     }
     
-    func didFinishChild() {
-        childCoordinator = nil
-    }
-    
 }
 
 extension AppCoordinator: HomeCoordinatorDelegate {
     
-    func goToFirstView() {
-        let firstCoodinator = FirstViewCoordinator()
-        route(from: firstCoodinator, present: .present)
-    }
-    
-    func goToSecondView() {
-        let firstCoodinator = SecondViewCoordinator()
-        route(from: firstCoodinator, present: .push)
-    }
 }
