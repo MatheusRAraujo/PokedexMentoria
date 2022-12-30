@@ -10,7 +10,8 @@ Projeto iOS de mentoria
 - [ ] PokeAPI
 - [ ] SwiftLint
 - [ ] XCTest
-- [ ] MVC
+- [ ] MVVM-C
+- [ ] ARC
 
 ### Feature
 - [ ] Home
