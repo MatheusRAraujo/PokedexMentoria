@@ -19,6 +19,14 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
+    
+    @objc func didTapPokemonList() {
+        
+    }
+    
+    @objc func didTapItens() {
+        
+    }
 
 }
 
