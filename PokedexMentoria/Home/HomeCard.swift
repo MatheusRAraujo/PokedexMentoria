@@ -35,7 +35,7 @@ final class HomeCard: CardView {
     }()
     
     private lazy var pokeball: PokeBallView = {
-        let pokeball = PokeBallView(color: .black, size: 50)
+        let pokeball = PokeBallView(color: style.backgroundColor, size: 50)
         return pokeball
     }()
     

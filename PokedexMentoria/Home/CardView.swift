@@ -28,8 +28,6 @@ class CardView: UIView {
         layer.masksToBounds = true
         layer.cornerRadius = .defaultCornerRadius
         backgroundColor = .white
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.cyan.cgColor
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
     }
