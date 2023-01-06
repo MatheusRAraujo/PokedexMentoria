@@ -34,6 +34,11 @@ final class HomeCard: CardView {
         return label
     }()
     
+    private lazy var pokeball: PokeBallView = {
+        let pokeball = PokeBallView(color: .black, size: 50)
+        return pokeball
+    }()
+    
     init(style: Style) {
         
         self.style = style
@@ -52,13 +57,21 @@ final class HomeCard: CardView {
     
     func makeViewHierarch() {
         addSubview(label)
+        addSubview(pokeball)
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor, constant: .defaultSpacement),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.defaultSpacement),
+            label.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .defaultSpacement),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .defaultSpacement),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.defaultSpacement)
+            label.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.defaultSpacement),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            pokeball.topAnchor.constraint(equalTo: topAnchor, constant: .defaultSpacement),
+            pokeball.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 20),
+            pokeball.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.defaultSpacement),
+            pokeball.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.defaultSpacement)
         ])
+        
+        
     }
     
 }
