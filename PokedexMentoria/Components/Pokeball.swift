@@ -54,7 +54,7 @@ class PokeBallView: UIView {
         topPath.lineWidth = externalLineWidth
         topPath.stroke()
         
-        let circlePath = UIBezierPath(arcCenter: viewCenter, radius: externalRadius / 3, startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: viewCenter, radius: externalRadius / 3, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         color.setStroke()
         color.setFill()
         circlePath.lineWidth = externalLineWidth * 0.3
@@ -62,27 +62,4 @@ class PokeBallView: UIView {
         circlePath.fill()
     }
     
-}
-
-extension UIColor {
-
-    func lighter(by percentage: CGFloat = 10.0) -> UIColor? {
-        return self.adjust(by: abs(percentage) )
-    }
-
-    func darker(by percentage: CGFloat = 10.0) -> UIColor? {
-        return self.adjust(by: -1 * abs(percentage) )
-    }
-
-    func adjust(by percentage: CGFloat = 30.0) -> UIColor? {
-        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
-        if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-            return UIColor(red: min(red + percentage/100, 1.0),
-                           green: min(green + percentage/100, 1.0),
-                           blue: min(blue + percentage/100, 1.0),
-                           alpha: alpha)
-        } else {
-            return nil
-        }
-    }
 }
