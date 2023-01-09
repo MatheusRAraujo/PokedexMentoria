@@ -14,12 +14,11 @@ final class AppCoordinator: Coordinator {
     
     func start() -> UIViewController {
         let tabBar = UITabBarController()
-        let homeViewController = HomeViewController()
-        homeViewController.homeCoordinatorDelegate = self
-        homeViewController.tabBarItem = UITabBarItem(title: "Home",
+        
+        let homeNavigationController = HomeCoordinator().start()
+        homeNavigationController.tabBarItem = UITabBarItem(title: "Home",
                                                      image: UIImage(systemName: "house"),
                                                      selectedImage: UIImage(systemName: "house.fill"))
-        let newNavigation = UINavigationController(rootViewController: homeViewController)
         
         let seachViewController = UIViewController()
         seachViewController.tabBarItem = UITabBarItem(title: "Busca",
@@ -37,15 +36,11 @@ final class AppCoordinator: Coordinator {
                                                          selectedImage: nil)
         
         
-        tabBar.setViewControllers([newNavigation, seachViewController, teamBuildViewController, settingsViewController],
+        tabBar.setViewControllers([homeNavigationController, seachViewController, teamBuildViewController, settingsViewController],
                                   animated: true)
         tabBar.tabBar.backgroundColor = .white
         viewController = tabBar
         return tabBar
     }
-    
-}
-
-extension AppCoordinator: HomeCoordinatorDelegate {
     
 }
