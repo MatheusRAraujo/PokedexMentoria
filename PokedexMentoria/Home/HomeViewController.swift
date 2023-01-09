@@ -20,8 +20,8 @@ final class HomeViewController: UIViewController {
     private lazy var mainStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        HomeCard.Style.allCases.forEach { style in
-            let card = HomeCard(style: style)
+        PokeballCard.Style.allCases.forEach { style in
+            let card = PokeballCard(style: style)
             card.delegate = self
             stackView.addArrangedSubview(card)
         }
@@ -51,7 +51,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: CardViewDelegate {
     
     func didTapCard(sender: CardView) {
-        guard let sender = sender as? HomeCard else {return}
+        guard let sender = sender as? PokeballCard else {return}
         print(sender.style)
         switch sender.style {
         case .list:

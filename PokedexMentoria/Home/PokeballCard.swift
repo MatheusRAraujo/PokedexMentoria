@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol HomeCardDelegate: CardViewDelegate {
-    func didTapHomeCard(sender: HomeCard)
-}
-
-final class HomeCard: CardView {
+final class PokeballCard: CardView {
 
     enum Style: CaseIterable {
         case list
@@ -24,7 +20,7 @@ final class HomeCard: CardView {
     
     let style: Style
     
-    private lazy var label: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "texto aleatorio"
         label.numberOfLines = 0
@@ -40,13 +36,12 @@ final class HomeCard: CardView {
     }()
     
     init(style: Style) {
-        
         self.style = style
         super.init()
         
         backgroundColor = style.backgroundColor
-        label.textColor = style.textColor
-        label.text = style.title
+        titleLabel.textColor = style.textColor
+        titleLabel.text = style.title
         
         makeViewHierarch()
     }
@@ -56,17 +51,17 @@ final class HomeCard: CardView {
     }
     
     func makeViewHierarch() {
-        addSubview(label)
+        addSubview(titleLabel)
         addSubview(pokeball)
         
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .defaultSpacement),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .defaultSpacement),
-            label.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.defaultSpacement),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: .defaultSpacement),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .defaultSpacement),
+            titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -.defaultSpacement),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             pokeball.topAnchor.constraint(equalTo: topAnchor, constant: .defaultSpacement),
-            pokeball.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 20),
+            pokeball.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 20),
             pokeball.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.defaultSpacement),
             pokeball.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.defaultSpacement)
         ])
@@ -76,7 +71,7 @@ final class HomeCard: CardView {
     
 }
 
-fileprivate extension HomeCard.Style {
+fileprivate extension PokeballCard.Style {
     var backgroundColor: UIColor {
         switch self {
         case .list: //red
