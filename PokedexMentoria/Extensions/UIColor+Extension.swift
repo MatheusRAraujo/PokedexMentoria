@@ -14,10 +14,10 @@ extension UIColor {
     }
 
     func darker(by percentage: CGFloat = 10.0) -> UIColor? {
-        return self.adjust(by: -1 * abs(percentage) )
+        return self.adjust(by: -abs(percentage) )
     }
 
-    func adjust(by percentage: CGFloat = 30.0) -> UIColor? {
+    private func adjust(by percentage: CGFloat) -> UIColor? {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
             return UIColor(red: min(red + percentage/100, 1.0),

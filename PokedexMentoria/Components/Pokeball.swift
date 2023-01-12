@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PokeBallView: UIView {
+final class PokeBallView: UIView {
     
     // MARK: Variables
     var viewCenter: CGPoint {
