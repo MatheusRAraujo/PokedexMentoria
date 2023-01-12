@@ -36,7 +36,7 @@ final class HomeViewController: UIViewController {
         makeLayoutHierarch()
     }
     
-    func makeLayoutHierarch() {
+    private func makeLayoutHierarch() {
         view.addSubview(mainStack)
         
         NSLayoutConstraint.activate([
@@ -52,7 +52,6 @@ extension HomeViewController: CardViewDelegate {
     
     func didTapCard(sender: CardView) {
         guard let sender = sender as? PokeballCard else {return}
-        print(sender.style)
         switch sender.style {
         case .list:
             break

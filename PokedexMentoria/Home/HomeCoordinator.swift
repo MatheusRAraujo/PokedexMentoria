@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCoordinator: Coordinator {
+final class HomeCoordinator: Coordinator {
     
     var childCoordinator: Coordinator?
     var viewController: UIViewController?
