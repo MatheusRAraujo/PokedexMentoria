@@ -10,15 +10,15 @@ import UIKit
 final class PokeBallView: UIView {
     
     // MARK: Variables
-    var viewCenter: CGPoint {
+    private var viewCenter: CGPoint {
         CGPoint(x: frame.width / 2, y: frame.width / 2)
     }
     
-    var externalRadius: CGFloat {
+    private var externalRadius: CGFloat {
         (frame.width - externalLineWidth) / 2
     }
     
-    var externalLineWidth: CGFloat {
+    private var externalLineWidth: CGFloat {
         frame.width * 0.3
     }
     
