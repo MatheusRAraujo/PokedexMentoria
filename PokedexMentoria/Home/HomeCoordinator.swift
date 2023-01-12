@@ -24,4 +24,22 @@ final class HomeCoordinator: Coordinator {
 
 extension HomeCoordinator: HomeCoordinatorDelegate {
     
+    func goToPokemonList() {
+    }
+    
+    func goToAbilities() {
+    }
+    
+    func goToMoves() {
+    }
+    
+    func goToLocations() {
+    }
+    
+    func goToItems() {
+    }
+    
+    func goToTypes() {
+    }
+    
 }
