@@ -8,7 +8,12 @@
 import UIKit
 
 protocol HomeCoordinatorDelegate: AnyObject {
-    
+    func goToPokemonList()
+    func goToAbilities()
+    func goToMoves()
+    func goToLocations()
+    func goToItems()
+    func goToTypes()
 }
 
 final class HomeViewController: UIViewController {
