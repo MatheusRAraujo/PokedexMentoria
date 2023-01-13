@@ -7,18 +7,23 @@
 
 import UIKit
 
+@objc protocol PokeballCardDelegate: AnyObject {
+    func didTapCard(sender: PokeballCard)
+}
+
 final class PokeballCard: CardView {
 
     enum Style: CaseIterable {
-        case list
-        case abilities
-        case moves
-        case locations
-        case items
-        case typeChart
+        case red
+        case orange
+        case yellow
+        case green
+        case blue
+        case purple
     }
     
     let style: Style
+    weak var delegate: PokeballCardDelegate?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -35,13 +40,15 @@ final class PokeballCard: CardView {
         return pokeball
     }()
     
-    init(style: Style) {
+    init(style: Style, title: String) {
         self.style = style
         super.init()
         
         backgroundColor = style.backgroundColor
         titleLabel.textColor = style.textColor
-        titleLabel.text = style.title
+        titleLabel.text = title
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
         
         makeViewHierarch()
     }
@@ -65,8 +72,10 @@ final class PokeballCard: CardView {
             pokeball.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.defaultSpacement),
             pokeball.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.defaultSpacement)
         ])
-        
-        
+    }
+    
+    @objc func didTap() {
+        delegate?.didTapCard(sender: self)
     }
     
 }
@@ -74,44 +83,28 @@ final class PokeballCard: CardView {
 fileprivate extension PokeballCard.Style {
     var backgroundColor: UIColor {
         switch self {
-        case .list: //red
+        case .red:
             return UIColor(cgColor: CGColor(red: 223/255, green: 92/255, blue: 103/255, alpha: 1))
-        case .abilities: //orange
+        case .orange:
             return UIColor(cgColor: CGColor(red: 230/255, green: 155/255, blue: 91/255, alpha: 1))
-        case .moves: //yellow
+        case .yellow:
             return UIColor(cgColor: CGColor(red: 237/255, green: 210/255, blue: 106/255, alpha: 1))
-        case .locations: //green
+        case .green:
             return UIColor(cgColor: CGColor(red: 80/255, green: 165/255, blue: 118/255, alpha: 1))
-        case .items: // blue
+        case .blue:
             return UIColor(cgColor: CGColor(red: 83/255, green: 112/255, blue: 232/255, alpha: 1))
-        case .typeChart: //purple
+        case .purple:
             return UIColor(cgColor: CGColor(red: 94/255, green: 68/255, blue: 144/255, alpha: 1))
         }
     }
     
     var textColor: UIColor {
         switch self {
-        case .moves:
+        case .yellow:
             return .black
         default:
             return .white
         }
     }
-    
-    var title: String {
-        switch self {
-        case .list:
-            return "Lista"
-        case .abilities:
-            return "Habilidades"
-        case .moves:
-            return "Ataques"
-        case .locations:
-            return "Locais"
-        case .items:
-            return "Itens"
-        case .typeChart:
-            return "Tipos"
-        }
-    }
+
 }

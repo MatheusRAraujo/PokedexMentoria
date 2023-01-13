@@ -21,12 +21,40 @@ final class HomeViewController: UIViewController {
     weak var homeCoordinatorDelegate: HomeCoordinatorDelegate?
     
     // MARK: - ViewCode
-    
+    enum CardType: String, CaseIterable {
+        case list = "Lista"
+        case abilities = "Habilidades"
+        case moves = "Ataques"
+        case locations = "Locais"
+        case items = "Itens"
+        case types = "Tipos"
+
+        var style: PokeballCard.Style {
+            switch self {
+            case .list:
+                return .red
+            case .abilities:
+                return .orange
+            case .moves:
+                return .yellow
+            case .locations:
+                return .green
+            case .items:
+                return .blue
+            case .types:
+                return .purple
+            }
+        }
+    }
+
+    private var cards: [CardType: PokeballCard] = [:]
+
     private lazy var mainStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        PokeballCard.Style.allCases.forEach { style in
-            let card = PokeballCard(style: style)
+        CardType.allCases.forEach { type in
+            let card = PokeballCard(style: type.style, title: type.rawValue)
+            cards[type] = card
             card.delegate = self
             stackView.addArrangedSubview(card)
         }
@@ -48,27 +76,27 @@ final class HomeViewController: UIViewController {
             mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        
     }
 
 }
 
-extension HomeViewController: CardViewDelegate {
+extension HomeViewController: PokeballCardDelegate {
     
-    func didTapCard(sender: CardView) {
-        guard let sender = sender as? PokeballCard else {return}
-        switch sender.style {
-        case .list:
-            break
-        case .abilities:
-            break
-        case .moves:
-            break
-        case .locations:
-            break
-        case .items:
-            break
-        case .typeChart:
+    func didTapCard(sender: PokeballCard) {
+        switch sender {
+        case cards[.list]:
+            homeCoordinatorDelegate?.goToPokemonList()
+        case cards[.abilities]:
+            homeCoordinatorDelegate?.goToAbilities()
+        case cards[.moves]:
+            homeCoordinatorDelegate?.goToMoves()
+        case cards[.locations]:
+            homeCoordinatorDelegate?.goToLocations()
+        case cards[.items]:
+            homeCoordinatorDelegate?.goToItems()
+        case cards[.types]:
+            homeCoordinatorDelegate?.goToTypes()
+        default:
             break
         }
     }

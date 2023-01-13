@@ -7,13 +7,7 @@
 
 import UIKit
 
-@objc protocol CardViewDelegate: AnyObject {
-    func didTapCard(sender: CardView)
-}
-
 class CardView: UIView {
-    
-    weak var delegate: CardViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -29,11 +23,6 @@ class CardView: UIView {
         layer.cornerRadius = .defaultCornerRadius
         backgroundColor = .white
         
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
-    }
-    
-    @objc func didTap() {
-        delegate?.didTapCard(sender: self)
     }
     
 }
