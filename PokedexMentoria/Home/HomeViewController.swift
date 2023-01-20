@@ -68,11 +68,26 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        makeLayoutHierarch()
+//        makeLayoutHierarch()
         
-        network.bateNaAPI(urlString: "pokemon?limit=10") { (generic: PokemonList) in
-            print(generic)
+//        network.bateNaAPI(urlString: "pokemon?limit=10") { (result: Result<PokemonList, Error>) in
+//            switch result {
+//            case .success(let pokemonList):
+//                print(pokemonList)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+        
+        network.bateNaAPI(urlString: "pokemon/1/") { (result: Result<PokemonGeneral, Error>) in
+            switch result {
+            case .success(let pokemonList):
+                print("bulbasaur:", pokemonList)
+            case .failure(let error):
+                print(error)
+            }
         }
+        
         
     }
     
@@ -109,3 +124,37 @@ extension HomeViewController: PokeballCardDelegate {
     }
     
 }
+
+struct PokemonGeneral: Codable {
+    var abilities: [Ability]
+}
+
+struct Ability: Codable {
+    var ability: InsideAbility
+    var isHidden: Bool
+    var slot: Int
+}
+
+struct InsideAbility: Codable {
+    var name: String
+    var url: String
+}
+//
+//"abilities": [
+//    {
+//      "ability": {
+//        "name": "overgrow",
+//        "url": "https://pokeapi.co/api/v2/ability/65/"
+//      },
+//      "is_hidden": false,
+//      "slot": 1
+//    },
+//    {
+//      "ability": {
+//        "name": "chlorophyll",
+//        "url": "https://pokeapi.co/api/v2/ability/34/"
+//      },
+//      "is_hidden": true,
+//      "slot": 3
+//    }
+//  ]

@@ -17,27 +17,29 @@ enum RequestType {
 class NetworkTrash {
     let baseUrl = "https://pokeapi.co/api/v2/"
     private let session = URLSession(configuration: .default)
-    private let decoder = JSONDecoder()
+    private var decoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }
     
-    func bateNaAPI<T: Codable>(urlString: String, completion: @escaping( (T) -> Void ) ) {
+    func bateNaAPI<T: Codable>(urlString: String, completion: @escaping((Result<T, Error>) -> Void)) {
         
         guard let pokeStringURL: URL = URL(string: baseUrl + urlString) else { return }
         let request = URLRequest(url: pokeStringURL)
         let task = session.dataTask(with: request) { [weak self] data, response, error in
             guard let self else { return }
-            if error == nil {
+            if let error {
+                completion(.failure(error))
+            } else {
                 if let data {
                     do {
                         let retrievedData: T = try self.decodeSafeData(data)
-                        completion(retrievedData)
-                    } catch  {
-                        //erroHandler
-                        print("caiu no catch")
-                        print("error: \(error)")
+                        completion(.success(retrievedData))
+                    } catch {
+                            completion(.failure(error))
                     }
                 }
-            } else {
-                // errorHandler
             }
         }
         task.resume()
@@ -50,9 +52,6 @@ class NetworkTrash {
             throw error
         }
     }
-    
-    
-    
 }
 
 struct PokemonList: Codable {
