@@ -62,11 +62,18 @@ final class HomeViewController: UIViewController {
         stackView.spacing = .defaultSpacement
         return stackView
     }()
+    
+    let network = NetworkTrash()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         makeLayoutHierarch()
+        
+        network.bateNaAPI(urlString: "pokemon?limit=10") { (generic: PokemonList) in
+            print(generic)
+        }
+        
     }
     
     private func makeLayoutHierarch() {
