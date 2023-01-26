@@ -52,14 +52,14 @@ final class PokeBallView: UIView {
         let topPath = UIBezierPath(arcCenter: viewCenter, radius: externalRadius, startAngle: -CGFloat.pi + 0.1, endAngle: 0.1, clockwise: true)
         color.setStroke()
         topPath.lineWidth = externalLineWidth
-        topPath.stroke()
+//        topPath.stroke()
         
         let circlePath = UIBezierPath(arcCenter: viewCenter, radius: externalRadius / 3, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         color.setStroke()
-        color.setFill()
+//        color.setFill()
         circlePath.lineWidth = externalLineWidth * 0.3
-        circlePath.stroke()
-        circlePath.fill()
+//        circlePath.stroke()
+//        circlePath.fill()
     }
     
 }

@@ -68,25 +68,25 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-//        makeLayoutHierarch()
+        makeLayoutHierarch()
         
-//        network.bateNaAPI(urlString: "pokemon?limit=10") { (result: Result<PokemonList, Error>) in
-//            switch result {
-//            case .success(let pokemonList):
-//                print(pokemonList)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-        network.bateNaAPI(urlString: "pokemon/1/") { (result: Result<PokemonGeneral, Error>) in
+        network.bateNaAPI(request: PokemonAPI.pokemonList) { (result: Result<PokemonList, Error>) in
             switch result {
             case .success(let pokemonList):
-                print("bulbasaur:", pokemonList)
+                print(pokemonList)
             case .failure(let error):
                 print(error)
             }
         }
+        
+//        network.bateNaAPI(request: PokemonAPI.pokemon(id: 1)) { (result: Result<PokemonGeneral, Error>) in
+//            switch result {
+//            case .success(let pokemonList):
+//                print("bulbasaur:", pokemonList)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         
         
     }
