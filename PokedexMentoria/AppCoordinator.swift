@@ -11,11 +11,12 @@ final class AppCoordinator: Coordinator {
 
     var childCoordinator: Coordinator?
     var viewController: UIViewController?
+    let homeCoordinator = HomeCoordinator()
     
     func start() -> UIViewController {
         let tabBar = UITabBarController()
         
-        let homeNavigationController = HomeCoordinator().start()
+        let homeNavigationController = homeCoordinator.start()
         homeNavigationController.tabBarItem = UITabBarItem(title: "Home",
                                                      image: UIImage(systemName: "house"),
                                                      selectedImage: UIImage(systemName: "house.fill"))

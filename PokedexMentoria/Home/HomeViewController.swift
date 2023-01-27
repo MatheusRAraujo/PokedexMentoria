@@ -70,14 +70,14 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = .white
         makeLayoutHierarch()
         
-        network.bateNaAPI(request: PokemonAPI.pokemonList) { (result: Result<PokemonList, Error>) in
-            switch result {
-            case .success(let pokemonList):
-                print(pokemonList)
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        network.bateNaAPI(request: PokemonAPI.pokemonList) { (result: Result<PokemonList, Error>) in
+//            switch result {
+//            case .success(let pokemonList):
+//                print(pokemonList)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         
 //        network.bateNaAPI(request: PokemonAPI.pokemon(id: 1)) { (result: Result<PokemonGeneral, Error>) in
 //            switch result {
@@ -107,6 +107,7 @@ extension HomeViewController: PokeballCardDelegate {
     func didTapCard(sender: PokeballCard) {
         switch sender {
         case cards[.list]:
+            print("tap list card")
             homeCoordinatorDelegate?.goToPokemonList()
         case cards[.abilities]:
             homeCoordinatorDelegate?.goToAbilities()
@@ -139,22 +140,3 @@ struct InsideAbility: Codable {
     var name: String
     var url: String
 }
-//
-//"abilities": [
-//    {
-//      "ability": {
-//        "name": "overgrow",
-//        "url": "https://pokeapi.co/api/v2/ability/65/"
-//      },
-//      "is_hidden": false,
-//      "slot": 1
-//    },
-//    {
-//      "ability": {
-//        "name": "chlorophyll",
-//        "url": "https://pokeapi.co/api/v2/ability/34/"
-//      },
-//      "is_hidden": true,
-//      "slot": 3
-//    }
-//  ]
