@@ -108,6 +108,7 @@ extension HomeViewController: PokeballCardDelegate {
         switch sender {
         case cards[.list]:
             print("tap list card")
+            print("homeCoordinator is \(homeCoordinatorDelegate)" )
             homeCoordinatorDelegate?.goToPokemonList()
         case cards[.abilities]:
             homeCoordinatorDelegate?.goToAbilities()

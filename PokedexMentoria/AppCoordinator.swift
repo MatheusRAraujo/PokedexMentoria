@@ -7,10 +7,8 @@
 
 import UIKit
 
-final class AppCoordinator: Coordinator {
-
-    var childCoordinator: Coordinator?
-    var viewController: UIViewController?
+final class AppCoordinator {
+    
     let homeCoordinator = HomeCoordinator()
     
     func start() -> UIViewController {
@@ -40,7 +38,7 @@ final class AppCoordinator: Coordinator {
         tabBar.setViewControllers([homeNavigationController, seachViewController, teamBuildViewController, settingsViewController],
                                   animated: true)
         tabBar.tabBar.backgroundColor = .white
-        viewController = tabBar
+//        viewController = tabBar
         return tabBar
     }
     

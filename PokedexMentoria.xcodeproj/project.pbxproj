@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BC31F38729843E4E0097C582 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38629843E4E0097C582 /* ListViewModel.swift */; };
+		BC31F38B29845C440097C582 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38A29845C440097C582 /* FeedbackViewController.swift */; };
 		BC983ED429841268006B91F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983ED329841268006B91F1 /* AppDelegate.swift */; };
 		BC983ED629841268006B91F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983ED529841268006B91F1 /* SceneDelegate.swift */; };
 		BC983EDD2984126A006B91F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC983EDC2984126A006B91F1 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		BC31F38629843E4E0097C582 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		BC31F38A29845C440097C582 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		BC983ED029841268006B91F1 /* PokedexMentoria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokedexMentoria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC983ED329841268006B91F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC983ED529841268006B91F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC31F38829845BD60097C582 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				BC31F38929845C040097C582 /* FeedbackScreen */,
+				BC983F0F298413A4006B91F1 /* Home */,
+				BC983F20298416E6006B91F1 /* List */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		BC31F38929845C040097C582 /* FeedbackScreen */ = {
+			isa = PBXGroup;
+			children = (
+				BC31F38A29845C440097C582 /* FeedbackViewController.swift */,
+			);
+			path = FeedbackScreen;
+			sourceTree = "<group>";
+		};
 		BC983EC729841268006B91F1 = {
 			isa = PBXGroup;
 			children = (
@@ -125,12 +145,11 @@
 		BC983ED229841268006B91F1 /* PokedexMentoria */ = {
 			isa = PBXGroup;
 			children = (
-				BC983F20298416E6006B91F1 /* List */,
 				BC983F0B298413A3006B91F1 /* AppCoordinator.swift */,
+				BC31F38829845BD60097C582 /* Feature */,
 				BC983F09298413A3006B91F1 /* Base */,
 				BC983F03298413A2006B91F1 /* Components */,
 				BC983F0C298413A4006B91F1 /* Extensions */,
-				BC983F0F298413A4006B91F1 /* Home */,
 				BC983F05298413A3006B91F1 /* Network */,
 				BC983ED329841268006B91F1 /* AppDelegate.swift */,
 				BC983ED529841268006B91F1 /* SceneDelegate.swift */,
@@ -351,6 +370,7 @@
 				BC983F1A298413A4006B91F1 /* UIColor+Extension.swift in Sources */,
 				BC983F1B298413A4006B91F1 /* CGFloat+Tokens.swift in Sources */,
 				BC983F1F298413A4006B91F1 /* HomeCoordinator.swift in Sources */,
+				BC31F38B29845C440097C582 /* FeedbackViewController.swift in Sources */,
 				BC983F1D298413A4006B91F1 /* PokeballCard.swift in Sources */,
 				BC983ED429841268006B91F1 /* AppDelegate.swift in Sources */,
 				BC983F22298416F6006B91F1 /* ListViewController.swift in Sources */,

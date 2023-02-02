@@ -14,6 +14,8 @@ class ListViewController: UIViewController {
     init(_ viewModel: ListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        viewModel.listModelDelegate = self
+        
     }
     
     private lazy var tableView: UITableView = {
@@ -30,6 +32,14 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeViewHierarchy()
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadData()
+       
     }
     
     func makeViewHierarchy() {
@@ -62,6 +72,16 @@ extension ListViewController: UITableViewDataSource {
         cell?.textLabel?.text = viewModel.pokeList[indexPath.row].name
         
         return cell ?? UITableViewCell()
+    }
+    
+    
+}
+
+extension ListViewController: ListViewDelegate {
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     
