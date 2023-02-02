@@ -16,7 +16,6 @@ struct Feedback {
 class FeedbackViewController: UIViewController {
     
     // Variables
-    
     let feedBack: Feedback
     
     private lazy var feedbackImageView: UIImageView = {
@@ -42,10 +41,11 @@ class FeedbackViewController: UIViewController {
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Ok.", for: .normal)
+        button.setTitle("Ok", for: .normal)
+        button.backgroundColor = .systemBlue
         button.setTitleColor(.black, for: .selected)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(confirmButtonPressed), for: .touchUpOutside)
+        button.addTarget(self, action: #selector(confirmButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -62,12 +62,49 @@ class FeedbackViewController: UIViewController {
     // life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
+        buildViewHierarchy()
     }
     
     // methods
     @objc private func confirmButtonPressed() {
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
+    }
+    
+    private func buildViewHierarchy() {
+        view.addSubview(feedbackImageView)
+        view.addSubview(titleLabel)
+        view.addSubview(textLabel)
+        view.addSubview(confirmButton)
+        
+        NSLayoutConstraint.activate([
+            feedbackImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.defaultSpacing),
+            feedbackImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            feedbackImageView.widthAnchor.constraint(equalToConstant: Constants.imageSize),
+            feedbackImageView.heightAnchor.constraint(equalToConstant: Constants.imageSize),
+            
+            titleLabel.topAnchor.constraint(equalTo: feedbackImageView.bottomAnchor, constant: Constants.defaultSpacing),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.titleToTextSpacing),
+            textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            confirmButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: Constants.defaultSpacing),
+            confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            confirmButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth),
+            confirmButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight)
+        ])
     }
 
+}
+
+extension FeedbackViewController {
+    enum Constants {
+        static let imageSize: CGFloat = 100
+        static let defaultSpacing: CGFloat = 90
+        static let titleToTextSpacing: CGFloat = 30
+        static let buttonWidth: CGFloat = 110
+        static let buttonHeight: CGFloat = 50
+    }
 }

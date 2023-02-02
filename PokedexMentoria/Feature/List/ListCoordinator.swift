@@ -19,6 +19,11 @@ class ListCoodinator: Coordinator, ListCoordinatorDelegate {
     
     func start() -> UIViewController {
         let viewModel = ListViewModel()
+        if viewModel.pokeList.isEmpty {
+            let image = UIImage(systemName: "house.fill") ?? UIImage()
+            let feedback = Feedback(image:image, title: "erro na api", text: "nao foi possivel recuperar lista")
+            showFeedback(feedback)
+        }
         viewModel.coordinatorDelegate = self
         return ListViewController(viewModel)
     }

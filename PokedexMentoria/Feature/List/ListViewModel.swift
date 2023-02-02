@@ -19,7 +19,7 @@ class ListViewModel {
     var pokemonList: PokemonList?
     
     var pokeList: [PokeList] {
-        pokemonList?.results ?? [PokeList(name: "deu ruim jovem", url: "url")]
+        pokemonList?.results ?? []
     }
     
     func loadData() {
