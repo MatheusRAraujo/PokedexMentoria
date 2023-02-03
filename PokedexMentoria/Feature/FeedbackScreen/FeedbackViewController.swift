@@ -68,7 +68,6 @@ class FeedbackViewController: UIViewController {
     
     // methods
     @objc private func confirmButtonPressed() {
-//        navigationController?.popViewController(animated: true)
         dismiss(animated: true)
     }
     

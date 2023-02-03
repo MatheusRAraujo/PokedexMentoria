@@ -15,7 +15,6 @@ class ListViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         viewModel.listModelDelegate = self
-        
     }
     
     private lazy var tableView: UITableView = {
@@ -32,14 +31,11 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeViewHierarchy()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.loadData()
-       
     }
     
     func makeViewHierarchy() {

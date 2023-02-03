@@ -24,13 +24,6 @@ extension Coordinator {
         let nextViewController = coordinator.start()
         coordinator.viewController = nextViewController
         
-        print("- -- - - - -- - - -- \n")
-        print("childCoordinator: \(childCoordinator)")
-        print("next view controller: \(nextViewController)")
-        print("coodinator view controller: \(viewController)")
-        print("in route navigation is: \(navigationController)")
-        print("present mode: \(present)")
-
         switch present {
         case .present:
             let newNav = UINavigationController(rootViewController: nextViewController)
@@ -46,7 +39,6 @@ extension Coordinator {
                                         text: "quero muito me mat4r!")
                showFeedback(feedBack)
             }
-            
         }
     }
     
