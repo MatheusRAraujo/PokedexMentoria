@@ -40,4 +40,37 @@ class ListViewModel {
         }
     }
     
+    func getPokemonName(id: Int) -> String {
+        let pokemonName = pokeList[id].name
+        return pokemonName.capitalized
+    }
+    
+    func formatIndex(index: Int) -> String {
+        index.stringWithFourCharacters
+    }
+    
+    func cellBackgroundColor(id: Int) -> UIColor {
+        switch id {
+        case 0...150: //Kanto - gen1
+            return .systemPink
+        case 151...250: //Johto - gen2
+            return .systemBlue
+        case 251...385: //Hoenn -gen3
+            return .systemGreen
+        case 386...492: //Sinnoh - gen4
+            return .systemYellow
+        case 492...648: //Unova - gen4
+            return .systemGray
+        case 649...720: //Kalos - gen6
+            return .systemCyan
+        case 721...808: //Alola - gen7
+            return .systemTeal
+        case 809...904: //Galar+Hisui - gen8
+            return .systemOrange
+        case 905...1008: //Paldea - gen9
+            return .systemPurple
+        default:
+            return .white
+        }
+    }
 }

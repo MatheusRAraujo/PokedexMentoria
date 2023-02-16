@@ -19,7 +19,7 @@ class ListViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "identfier")
+        tableView.register(ListViewCell.self, forCellReuseIdentifier: ListViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -52,6 +52,8 @@ class ListViewController: UIViewController {
         ])
     }
     
+    
+    
 }
 
 extension ListViewController: UITableViewDelegate {
@@ -62,15 +64,16 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.pokeList.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "identfier")
-        cell?.textLabel?.text = viewModel.pokeList[indexPath.row].name
-        
-        return cell ?? UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListViewCell.identifier) as! ListViewCell
+        let index = indexPath.row
+        cell.titleLabel.text = viewModel.getPokemonName(id: index)
+        cell.numberLabel.text = viewModel.formatIndex(index: index + 1)
+        cell.backgroundColor = viewModel.cellBackgroundColor(id: index)
+        return cell
     }
-    
-    
+
 }
 
 extension ListViewController: ListViewDelegate {
@@ -79,6 +82,5 @@ extension ListViewController: ListViewDelegate {
             self.tableView.reloadData()
         }
     }
-    
     
 }
