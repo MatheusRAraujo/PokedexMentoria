@@ -15,7 +15,7 @@ class ListViewModel {
     
     weak var coordinatorDelegate: ListCoordinatorDelegate?
     var listModelDelegate: ListViewDelegate?
-    let network = NetworkTrash()
+    let network = NetworkManager()
     var pokemonList: PokemonList?
     
     var pokeList: [PokeList] {

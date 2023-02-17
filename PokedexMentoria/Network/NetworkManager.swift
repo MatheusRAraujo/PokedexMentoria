@@ -1,5 +1,5 @@
 //
-//  Trashworking.swift
+//  NetworkManager.swift
 //  PokedexMentoria
 //
 //  Created by Matheus Rodrigues Araujo on 13/01/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkTrash {
+class NetworkManager {
     let baseUrl = "https://pokeapi.co/api/v2/"
     private let session = URLSession(configuration: .default)
     

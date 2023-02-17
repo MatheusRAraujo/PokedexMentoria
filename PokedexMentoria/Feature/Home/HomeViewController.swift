@@ -63,7 +63,7 @@ final class HomeViewController: UIViewController {
         return stackView
     }()
     
-    let network = NetworkTrash()
+    let network = NetworkManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
