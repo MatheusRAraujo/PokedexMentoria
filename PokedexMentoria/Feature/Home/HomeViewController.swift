@@ -69,26 +69,6 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         makeLayoutHierarch()
-        
-//        network.bateNaAPI(request: PokemonAPI.pokemonList) { (result: Result<PokemonList, Error>) in
-//            switch result {
-//            case .success(let pokemonList):
-//                print(pokemonList)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-//        network.bateNaAPI(request: PokemonAPI.pokemon(id: 1)) { (result: Result<PokemonGeneral, Error>) in
-//            switch result {
-//            case .success(let pokemonList):
-//                print("bulbasaur:", pokemonList)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-        
     }
     
     private func makeLayoutHierarch() {
@@ -107,8 +87,6 @@ extension HomeViewController: PokeballCardDelegate {
     func didTapCard(sender: PokeballCard) {
         switch sender {
         case cards[.list]:
-            print("tap list card")
-            print("homeCoordinator is \(homeCoordinatorDelegate)" )
             homeCoordinatorDelegate?.goToPokemonList()
         case cards[.abilities]:
             homeCoordinatorDelegate?.goToAbilities()
@@ -125,19 +103,4 @@ extension HomeViewController: PokeballCardDelegate {
         }
     }
     
-}
-
-struct PokemonGeneral: Codable {
-    var abilities: [Ability]
-}
-
-struct Ability: Codable {
-    var ability: InsideAbility
-    var isHidden: Bool
-    var slot: Int
-}
-
-struct InsideAbility: Codable {
-    var name: String
-    var url: String
 }

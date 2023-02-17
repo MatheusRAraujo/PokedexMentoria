@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+final class ListViewController: UIViewController {
     
-    let viewModel: ListViewModel
+    private let viewModel: ListViewModel
     
     init(_ viewModel: ListViewModel) {
         self.viewModel = viewModel
@@ -24,6 +24,7 @@ class ListViewController: UIViewController {
         return tableView
     }()
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,7 +39,7 @@ class ListViewController: UIViewController {
         viewModel.loadData()
     }
     
-    func makeViewHierarchy() {
+    private func makeViewHierarchy() {
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -60,12 +61,12 @@ extension ListViewController: UITableViewDelegate {
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.pokeList.count
+        viewModel.pokemonListage.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "identfier")
-        cell?.textLabel?.text = viewModel.pokeList[indexPath.row].name
+        cell?.textLabel?.text = viewModel.pokemonListage[indexPath.row].name
         
         return cell ?? UITableViewCell()
     }

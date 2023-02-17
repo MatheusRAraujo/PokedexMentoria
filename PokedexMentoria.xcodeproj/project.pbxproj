@@ -30,6 +30,7 @@
 		BC983F1F298413A4006B91F1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983F13298413A4006B91F1 /* HomeCoordinator.swift */; };
 		BC983F22298416F6006B91F1 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983F21298416F6006B91F1 /* ListViewController.swift */; };
 		BC983F242984193E006B91F1 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983F232984193E006B91F1 /* ListCoordinator.swift */; };
+		BCFED9B6299FC4F800DAC3B4 /* PokemonListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFED9B5299FC4F800DAC3B4 /* PokemonListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		BC983F13298413A4006B91F1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		BC983F21298416F6006B91F1 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BC983F232984193E006B91F1 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		BCFED9B5299FC4F800DAC3B4 /* PokemonListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				BC983F21298416F6006B91F1 /* ListViewController.swift */,
 				BC983F232984193E006B91F1 /* ListCoordinator.swift */,
 				BC31F38629843E4E0097C582 /* ListViewModel.swift */,
+				BCFED9B5299FC4F800DAC3B4 /* PokemonListModel.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				BC31F38B29845C440097C582 /* FeedbackViewController.swift in Sources */,
 				BC983F1D298413A4006B91F1 /* PokeballCard.swift in Sources */,
 				BC983ED429841268006B91F1 /* AppDelegate.swift in Sources */,
+				BCFED9B6299FC4F800DAC3B4 /* PokemonListModel.swift in Sources */,
 				BC983F22298416F6006B91F1 /* ListViewController.swift in Sources */,
 				BC983F19298413A4006B91F1 /* AppCoordinator.swift in Sources */,
 				BC983F16298413A4006B91F1 /* APIRequest.swift in Sources */,

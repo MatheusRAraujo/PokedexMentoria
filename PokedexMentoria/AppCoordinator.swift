@@ -38,7 +38,6 @@ final class AppCoordinator {
         tabBar.setViewControllers([homeNavigationController, seachViewController, teamBuildViewController, settingsViewController],
                                   animated: true)
         tabBar.tabBar.backgroundColor = .white
-//        viewController = tabBar
         return tabBar
     }
     

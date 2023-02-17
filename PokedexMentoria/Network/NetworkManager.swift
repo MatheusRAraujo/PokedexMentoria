@@ -11,7 +11,7 @@ class NetworkManager {
     let baseUrl = "https://pokeapi.co/api/v2/"
     private let session = URLSession(configuration: .default)
     
-    func bateNaAPI<T: Codable>(request: APIRequest, completion: @escaping((Result<T, Error>) -> Void)) {
+    func fetch<T: Codable>(request: APIRequest, completion: @escaping((Result<T, Error>) -> Void)) {
         
         guard let pokeStringURL: URL = URL(string: baseUrl + request.path) else { return }
         let urlRequest = URLRequest(url: pokeStringURL)
@@ -42,11 +42,4 @@ class NetworkManager {
     }
 }
 
-struct PokemonList: Codable {
-    var results: [PokeList]
-}
 
-struct PokeList: Codable {
-    var name: String
-    var url: String
-}

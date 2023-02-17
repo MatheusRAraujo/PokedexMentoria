@@ -14,24 +14,22 @@ protocol ListViewDelegate: AnyObject {
 class ListViewModel {
     
     weak var coordinatorDelegate: ListCoordinatorDelegate?
-    var listModelDelegate: ListViewDelegate?
+    weak var listModelDelegate: ListViewDelegate?
     let network = NetworkManager()
-    var pokemonList: PokemonList?
+    var pokemonListModel: PokemonListModel?
     
-    var pokeList: [PokeList] {
-        pokemonList?.results ?? []
+    var pokemonListage: [PokeList] {
+        pokemonListModel?.results ?? []
     }
     
     func loadData() {
-        network.bateNaAPI(request: PokemonAPI.pokemonList) { [weak self] (result: Result<PokemonList, Error>) in
+        network.fetch(request: PokemonAPI.pokemonList) { [weak self] (result: Result<PokemonListModel, Error>) in
             guard let self else { return }
             switch result {
             case .success(let pokemonList):
-                print(pokemonList)
-                self.pokemonList = pokemonList
+                self.pokemonListModel = pokemonList
                 self.listModelDelegate?.reloadTableView()
-            case .failure(let error):
-                print(error)
+            case .failure:
                 let feedBack = Feedback(image: UIImage(systemName: "house.fill")!,
                                         title: "Deu ruim",
                                         text: "quero muito me mat4r!")

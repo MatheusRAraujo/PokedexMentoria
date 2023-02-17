@@ -11,7 +11,7 @@ protocol ListCoordinatorDelegate: AnyObject {
     func showFeedback(_ feedback: Feedback)
 }
 
-class ListCoodinator: Coordinator, ListCoordinatorDelegate {
+final class ListCoodinator: Coordinator, ListCoordinatorDelegate {
     
     var navigationController: UINavigationController?
     var childCoordinator: Coordinator?

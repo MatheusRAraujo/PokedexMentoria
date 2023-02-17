@@ -13,10 +13,10 @@ struct Feedback {
     let text: String
 }
 
-class FeedbackViewController: UIViewController {
+final class FeedbackViewController: UIViewController {
     
     // Variables
-    let feedBack: Feedback
+    private let feedBack: Feedback
     
     private lazy var feedbackImageView: UIImageView = {
         let imageView = UIImageView(image: feedBack.image)
@@ -78,32 +78,22 @@ class FeedbackViewController: UIViewController {
         view.addSubview(confirmButton)
         
         NSLayoutConstraint.activate([
-            feedbackImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.defaultSpacing),
+            feedbackImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: .defaultSpacing),
             feedbackImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            feedbackImageView.widthAnchor.constraint(equalToConstant: Constants.imageSize),
-            feedbackImageView.heightAnchor.constraint(equalToConstant: Constants.imageSize),
+            feedbackImageView.widthAnchor.constraint(equalToConstant: .imageSize),
+            feedbackImageView.heightAnchor.constraint(equalToConstant: .imageSize),
             
-            titleLabel.topAnchor.constraint(equalTo: feedbackImageView.bottomAnchor, constant: Constants.defaultSpacing),
+            titleLabel.topAnchor.constraint(equalTo: feedbackImageView.bottomAnchor, constant: .defaultSpacing),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.titleToTextSpacing),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .titleToTextSpacing),
             textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            confirmButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: Constants.defaultSpacing),
+            confirmButton.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: .defaultSpacing),
             confirmButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            confirmButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth),
-            confirmButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight)
+            confirmButton.widthAnchor.constraint(equalToConstant: .buttonWidth),
+            confirmButton.heightAnchor.constraint(equalToConstant: .buttonHeight)
         ])
     }
 
-}
-
-extension FeedbackViewController {
-    enum Constants {
-        static let imageSize: CGFloat = 100
-        static let defaultSpacing: CGFloat = 90
-        static let titleToTextSpacing: CGFloat = 30
-        static let buttonWidth: CGFloat = 110
-        static let buttonHeight: CGFloat = 50
-    }
 }
