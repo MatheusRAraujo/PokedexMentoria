@@ -62,6 +62,8 @@ final class HomeViewController: UIViewController {
         stackView.spacing = .defaultSpacement
         return stackView
     }()
+    
+    let network = NetworkManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,15 +8,16 @@
 import UIKit
 
 final class HomeCoordinator: Coordinator {
-    
+    var navigationController: UINavigationController?
     var childCoordinator: Coordinator?
     var viewController: UIViewController?
     
     func start() -> UIViewController {
         let homeViewController = HomeViewController()
         homeViewController.homeCoordinatorDelegate = self
+        self.viewController = homeViewController
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        viewController = homeViewController
+        self.navigationController = homeNavigationController
         return homeNavigationController
     }
     
@@ -25,6 +26,8 @@ final class HomeCoordinator: Coordinator {
 extension HomeCoordinator: HomeCoordinatorDelegate {
     
     func goToPokemonList() {
+        let coordinator = ListCoodinator()
+        route(from: coordinator, present: .push)
     }
     
     func goToAbilities() {

@@ -7,15 +7,14 @@
 
 import UIKit
 
-final class AppCoordinator: Coordinator {
-
-    var childCoordinator: Coordinator?
-    var viewController: UIViewController?
+final class AppCoordinator {
+    
+    let homeCoordinator = HomeCoordinator()
     
     func start() -> UIViewController {
         let tabBar = UITabBarController()
         
-        let homeNavigationController = HomeCoordinator().start()
+        let homeNavigationController = homeCoordinator.start()
         homeNavigationController.tabBarItem = UITabBarItem(title: "Home",
                                                      image: UIImage(systemName: "house"),
                                                      selectedImage: UIImage(systemName: "house.fill"))
@@ -39,7 +38,6 @@ final class AppCoordinator: Coordinator {
         tabBar.setViewControllers([homeNavigationController, seachViewController, teamBuildViewController, settingsViewController],
                                   animated: true)
         tabBar.tabBar.backgroundColor = .white
-        viewController = tabBar
         return tabBar
     }
     
