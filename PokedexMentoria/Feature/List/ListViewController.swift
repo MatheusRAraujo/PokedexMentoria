@@ -52,14 +52,9 @@ final class ListViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    
-    
 }
 
-extension ListViewController: UITableViewDelegate {
-    
-}
+extension ListViewController: UITableViewDelegate {}
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,5 +78,4 @@ extension ListViewController: ListViewDelegate {
             self.tableView.reloadData()
         }
     }
-    
 }
