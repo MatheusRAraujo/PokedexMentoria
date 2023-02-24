@@ -11,6 +11,12 @@ protocol DetailsViewModelDelegate: AnyObject {
 
 final class DetailsViewModel {
     
+    let pokemonNumber: Int
+    
+    init(pokemonNumber: Int) {
+        self.pokemonNumber = pokemonNumber
+    }
+    
     weak var delegate: DetailsViewModelDelegate?
     
 }

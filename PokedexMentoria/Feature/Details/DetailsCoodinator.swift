@@ -20,7 +20,7 @@ final class DetailsCoordinator: Coordinator {
     }
     
     func start() -> UIViewController {
-        let viewModel = DetailsViewModel()
+        let viewModel = DetailsViewModel(pokemonNumber: pokemonNumber)
         viewModel.delegate = self
         let detailsVC = DetailsViewController(viewModel: viewModel)
         return detailsVC
