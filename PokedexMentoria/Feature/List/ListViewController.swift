@@ -19,7 +19,7 @@ final class ListViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "identfier")
+        tableView.register(ListViewCell.self, forCellReuseIdentifier: ListViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -52,7 +52,6 @@ final class ListViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
 }
 
 extension ListViewController: UITableViewDelegate {
@@ -63,15 +62,16 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.pokemonListage.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "identfier")
-        cell?.textLabel?.text = viewModel.pokemonListage[indexPath.row].name
-        
-        return cell ?? UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListViewCell.identifier) as! ListViewCell
+        let index = indexPath.row
+        cell.setUp(title: viewModel.getPokemonName(id: index),
+                   number: viewModel.formatIndex(index: index + 1),
+                   backgroundColor: viewModel.cellBackgroundColor(id: index))
+        return cell
     }
-    
-    
+
 }
 
 extension ListViewController: ListViewDelegate {
@@ -80,6 +80,5 @@ extension ListViewController: ListViewDelegate {
             self.tableView.reloadData()
         }
     }
-    
     
 }
