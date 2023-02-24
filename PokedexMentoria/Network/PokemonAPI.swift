@@ -15,7 +15,6 @@ enum PokemonAPI: APIRequest {
             return "pokemon/\(id)/"
         case .pokemonList:
             return "pokemon?limit=1008"
-//            return "alsjhas-pokemon?limit=10"
         }
     }
     
