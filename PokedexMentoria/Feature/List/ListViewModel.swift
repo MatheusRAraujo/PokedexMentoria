@@ -71,4 +71,8 @@ class ListViewModel {
             return .white
         }
     }
+    
+    func detailsWithIndex(_ index: Int) {
+        coordinatorDelegate?.goToDetailsWithIndex(index)
+    }
 }

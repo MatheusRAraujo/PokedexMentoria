@@ -13,7 +13,7 @@ class DetailsViewController: UIViewController {
     
     init(viewModel: DetailsViewModel) {
         self.viewModel = viewModel
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
     @available(*, unavailable)

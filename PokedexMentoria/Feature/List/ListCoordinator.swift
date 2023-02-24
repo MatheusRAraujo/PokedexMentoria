@@ -9,9 +9,10 @@ import UIKit
 
 protocol ListCoordinatorDelegate: AnyObject {
     func showFeedback(_ feedback: Feedback)
+    func goToDetailsWithIndex(_ index: Int)
 }
 
-final class ListCoodinator: Coordinator, ListCoordinatorDelegate {
+final class ListCoordinator: Coordinator {
     
     var navigationController: UINavigationController?
     var childCoordinator: Coordinator?
@@ -22,5 +23,15 @@ final class ListCoodinator: Coordinator, ListCoordinatorDelegate {
         viewModel.coordinatorDelegate = self
         return ListViewController(viewModel)
     }
+    
+}
+
+extension ListCoordinator: ListCoordinatorDelegate {
+    func goToDetailsWithIndex(_ index: Int) {
+        print("indo pra tela de detalhes com o index: \(index)")
+        let coordinator = DetailsCoordinator()
+        route(from: coordinator, present: .push)
+    }
+    
     
 }

@@ -54,7 +54,13 @@ final class ListViewController: UIViewController {
     }
 }
 
-extension ListViewController: UITableViewDelegate {}
+extension ListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let id: Int = indexPath.row + 1
+        viewModel.detailsWithIndex(id)
+    }
+}
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
