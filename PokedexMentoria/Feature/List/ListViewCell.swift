@@ -11,16 +11,16 @@ class ListViewCell: UITableViewCell {
     
     static let identifier = "listIdentifier"
     
-    var numberLabel: UILabel = {
+    private lazy var numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "#0000"
+//        label.text = "#0000"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "name"
+//        label.text = "name"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -32,6 +32,11 @@ class ListViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setUp(title: String, number: String) {
+        titleLabel.text = title
+        numberLabel.text = number
     }
     
     private func makeLayout() {

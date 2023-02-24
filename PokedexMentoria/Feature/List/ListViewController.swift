@@ -52,9 +52,6 @@ final class ListViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    
-    
 }
 
 extension ListViewController: UITableViewDelegate {
@@ -69,8 +66,8 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListViewCell.identifier) as! ListViewCell
         let index = indexPath.row
-        cell.titleLabel.text = viewModel.getPokemonName(id: index)
-        cell.numberLabel.text = viewModel.formatIndex(index: index + 1)
+        cell.setUp(title: viewModel.getPokemonName(id: index),
+                   number: viewModel.formatIndex(index: index + 1))
         cell.backgroundColor = viewModel.cellBackgroundColor(id: index)
         return cell
     }
