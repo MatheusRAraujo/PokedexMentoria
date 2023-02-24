@@ -8,9 +8,16 @@
 import UIKit
 
 final class DetailsCoordinator: Coordinator {
+
     var childCoordinator: Coordinator?
     var viewController: UIViewController?
     var navigationController: UINavigationController?
+    
+    private let pokemonNumber: Int
+    
+    init(pokemonNumber: Int) {
+        self.pokemonNumber = pokemonNumber
+    }
     
     func start() -> UIViewController {
         let viewModel = DetailsViewModel()
