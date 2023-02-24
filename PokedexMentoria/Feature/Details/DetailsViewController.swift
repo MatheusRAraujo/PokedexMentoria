@@ -26,6 +26,26 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
+//    private lazy var typeCard: TypeTag = {
+//        let card = TypeTag(title: .flying, color: "green")
+//        card.translatesAutoresizingMaskIntoConstraints = false
+//        return card
+//    }()
+    
+    private lazy var typesStackView: UIStackView = {
+        let types = viewModel.getTypes()
+        var typeCards: [TypeTag] = []
+        for type in types {
+            typeCards.append(TypeTag(title: type, color: "green"))
+        }
+        let stackView = UIStackView(arrangedSubviews: typeCards)
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     private lazy var pokemonImage: UIImageView = {
         let image = UIImage(systemName: "house.fill")
         let imageView = UIImageView(image: image)
@@ -53,6 +73,7 @@ class DetailsViewController: UIViewController {
     private func makeLayout() {
         view.addSubview(pokemonName)
         view.addSubview(pokemonNumber)
+        view.addSubview(typesStackView)
         view.addSubview(pokemonImage)
         
         let imageSize: CGFloat = view.bounds.size.width / 2
@@ -66,7 +87,12 @@ class DetailsViewController: UIViewController {
             pokemonNumber.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalSpacing),
             pokemonNumber.heightAnchor.constraint(equalToConstant: Constants.labelHeight),
             
-            pokemonImage.topAnchor.constraint(equalTo: pokemonName.bottomAnchor, constant: Constants.labelsToViewSpacing),
+            typesStackView.topAnchor.constraint(equalTo: pokemonName.bottomAnchor, constant: 5),
+            typesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
+            typesStackView.heightAnchor.constraint(equalToConstant: 20),
+            typesStackView.widthAnchor.constraint(equalToConstant: 150),
+            
+            pokemonImage.topAnchor.constraint(equalTo: typesStackView.bottomAnchor, constant: Constants.labelsToViewSpacing),
             pokemonImage.heightAnchor.constraint(equalToConstant: imageSize),
             pokemonImage.widthAnchor.constraint(equalToConstant: imageSize),
             pokemonImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)

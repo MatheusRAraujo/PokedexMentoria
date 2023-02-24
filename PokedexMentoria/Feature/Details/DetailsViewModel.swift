@@ -19,4 +19,8 @@ final class DetailsViewModel {
     
     weak var delegate: DetailsViewModelDelegate?
     
+    func getTypes() -> [Types] {
+        [.flying, .fire]
+    }
+    
 }
