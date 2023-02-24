@@ -39,7 +39,7 @@ class ListViewModel {
     }
     
     func getPokemonName(id: Int) -> String {
-        let pokemonName = pokeList[id].name
+        let pokemonName = pokemonListage[id].name
         return pokemonName.capitalized
     }
     
