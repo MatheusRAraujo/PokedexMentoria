@@ -13,14 +13,12 @@ class ListViewCell: UITableViewCell {
     
     private lazy var numberLabel: UILabel = {
         let label = UILabel()
-//        label.text = "#0000"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-//        label.text = "name"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -34,9 +32,10 @@ class ListViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUp(title: String, number: String) {
+    func setUp(title: String, number: String, backgroundColor: UIColor) {
         titleLabel.text = title
         numberLabel.text = number
+        self.backgroundColor = backgroundColor
     }
     
     private func makeLayout() {

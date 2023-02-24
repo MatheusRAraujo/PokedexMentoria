@@ -67,8 +67,8 @@ extension ListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListViewCell.identifier) as! ListViewCell
         let index = indexPath.row
         cell.setUp(title: viewModel.getPokemonName(id: index),
-                   number: viewModel.formatIndex(index: index + 1))
-        cell.backgroundColor = viewModel.cellBackgroundColor(id: index)
+                   number: viewModel.formatIndex(index: index + 1),
+                   backgroundColor: viewModel.cellBackgroundColor(id: index))
         return cell
     }
 
