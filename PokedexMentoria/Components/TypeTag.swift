@@ -9,10 +9,10 @@ import UIKit
 
 final class TypeTag: UILabel {
     
-    init(title: Types, color: String) {
+    init(type: Types) {
         super.init(frame: .zero)
-        self.text = " \(title.rawValue)"
-        self.backgroundColor = .white
+        self.text = " \(type.rawValue)"
+        self.backgroundColor = type.typeColor
         configureText()
     }
     
@@ -33,10 +33,36 @@ final class TypeTag: UILabel {
 
 enum Types: String {
     
-    case flying = "Flying"
-    case normal = "Normal"
+    case dragon = "Dragon"
+    case figthing = "Figthing"
+    case ghost = "Ghost"
+    case poison = "Poison"
+    case bug = "Bug"
+    case water = "Water"
+    case rock = "Rock"
     case fire = "Fire"
     case grass = "Grass"
-    case water = "Water"
+    case ice = "Ice"
+    case normal = "Normal"
+    case flying = "Flying"
+    case iron = "Iron"
+    case dark = "Dark"
+    case psychic = "Psychic"
+    case ground = "Ground"
+    case eletric = "Eletric"
+    case fairy = "Fairy"
+    
+    var typeColor: UIColor {
+        switch self {
+        case .fire:
+            return .systemRed
+        case .water:
+            return .systemBlue
+        case .grass:
+            return .systemGreen
+        default:
+            return .gray
+        }
+    }
 
 }

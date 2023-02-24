@@ -26,17 +26,11 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-//    private lazy var typeCard: TypeTag = {
-//        let card = TypeTag(title: .flying, color: "green")
-//        card.translatesAutoresizingMaskIntoConstraints = false
-//        return card
-//    }()
-    
     private lazy var typesStackView: UIStackView = {
         let types = viewModel.getTypes()
         var typeCards: [TypeTag] = []
         for type in types {
-            typeCards.append(TypeTag(title: type, color: "green"))
+            typeCards.append(TypeTag(type: type))
         }
         let stackView = UIStackView(arrangedSubviews: typeCards)
         stackView.axis = .horizontal
