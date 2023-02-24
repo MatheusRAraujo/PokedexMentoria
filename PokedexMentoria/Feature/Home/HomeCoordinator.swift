@@ -27,9 +27,6 @@ extension HomeCoordinator: HomeCoordinatorDelegate {
     
     func goToPokemonList() {
         let coordinator = ListCoodinator()
-        print("nex coordinator: \(coordinator)")
-        print("atual viewController: \(viewController)")
-        print("atual navigation :\(navigationController)")
         route(from: coordinator, present: .push)
     }
     
