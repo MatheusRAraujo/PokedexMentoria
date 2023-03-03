@@ -256,13 +256,45 @@
 		BC983F20298416E6006B91F1 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				BC983F21298416F6006B91F1 /* ListViewController.swift */,
-				BC983F232984193E006B91F1 /* ListCoordinator.swift */,
-				BC31F38629843E4E0097C582 /* ListViewModel.swift */,
-				BCFF11CE29967681005326B6 /* ListViewCell.swift */,
-				BCFED9B5299FC4F800DAC3B4 /* PokemonListModel.swift */,
+				BCB4C30829AE984800672EB2 /* View */,
+				BCB4C30A29AE985B00672EB2 /* Model */,
+				BCB4C30929AE985200672EB2 /* ViewModel */,
+				BCB4C30B29AE988B00672EB2 /* ListCommons */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		BCB4C30829AE984800672EB2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCFF11CE29967681005326B6 /* ListViewCell.swift */,
+				BC983F21298416F6006B91F1 /* ListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BCB4C30929AE985200672EB2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC31F38629843E4E0097C582 /* ListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BCB4C30A29AE985B00672EB2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BCFED9B5299FC4F800DAC3B4 /* PokemonListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BCB4C30B29AE988B00672EB2 /* ListCommons */ = {
+			isa = PBXGroup;
+			children = (
+				BC983F232984193E006B91F1 /* ListCoordinator.swift */,
+			);
+			path = ListCommons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

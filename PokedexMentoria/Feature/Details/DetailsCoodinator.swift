@@ -7,6 +7,8 @@
 
 import UIKit
 
+protocol DetailsCoordinatorDelegate: AnyObject {}
+
 final class DetailsCoordinator: Coordinator {
 
     var childCoordinator: Coordinator?
@@ -28,4 +30,4 @@ final class DetailsCoordinator: Coordinator {
     
 }
 
-extension DetailsCoordinator: DetailsViewModelDelegate {}
+extension DetailsCoordinator: DetailsCoordinatorDelegate {}

@@ -13,7 +13,7 @@ class DetailsViewController: UIViewController {
     
     private lazy var pokemonName: UILabel = {
         let label = UILabel()
-        label.text = "Pidgeot"
+        label.text = "bla bla bla"
         label.font = UIFont.boldSystemFont(ofSize: Constants.nameFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -21,7 +21,7 @@ class DetailsViewController: UIViewController {
     
     private lazy var pokemonNumber: UILabel = {
         let label = UILabel()
-        label.text = "#0018"
+        label.text = "#----"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -50,7 +50,9 @@ class DetailsViewController: UIViewController {
     
     init(viewModel: DetailsViewModel) {
         self.viewModel = viewModel
+        
         super.init(nibName: nil, bundle: nil)
+        viewModel.detailsDelegate = self
     }
     
     @available(*, unavailable)
@@ -62,6 +64,8 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         makeLayout()
+//        pokemonName.text = viewModel.pokemonName
+//        pokemonNumber.text = viewModel.pokemonPokedexNumber
     }
     
     private func makeLayout() {
@@ -102,4 +106,15 @@ class DetailsViewController: UIViewController {
         static let labelsToViewSpacing: CGFloat = 20
     }
 
+}
+
+extension DetailsViewController: DetailsViewDelegate {
+    func setUpInfo(model: PokemonModel) {
+        DispatchQueue.main.async {
+            self.pokemonNumber.text = self.viewModel.pokemonPokedexNumber
+            self.pokemonName.text = self.viewModel.pokemonName
+        }
+    }
+    
+    
 }
