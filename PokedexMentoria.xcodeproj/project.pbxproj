@@ -35,6 +35,7 @@
 		BC983F1F298413A4006B91F1 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983F13298413A4006B91F1 /* HomeCoordinator.swift */; };
 		BC983F22298416F6006B91F1 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983F21298416F6006B91F1 /* ListViewController.swift */; };
 		BC983F242984193E006B91F1 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC983F232984193E006B91F1 /* ListCoordinator.swift */; };
+		BCC12CF829B2320F0059AAC7 /* TabBarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC12CF729B2320F0059AAC7 /* TabBarComponent.swift */; };
 		BCFED9B6299FC4F800DAC3B4 /* PokemonListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFED9B5299FC4F800DAC3B4 /* PokemonListModel.swift */; };
 		BCFF11CF29967681005326B6 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF11CE29967681005326B6 /* ListViewCell.swift */; };
 		BCFF11D129969496005326B6 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF11D029969496005326B6 /* Int+Extensions.swift */; };
@@ -90,6 +91,7 @@
 		BC983F13298413A4006B91F1 /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		BC983F21298416F6006B91F1 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BC983F232984193E006B91F1 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		BCC12CF729B2320F0059AAC7 /* TabBarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarComponent.swift; sourceTree = "<group>"; };
 		BCFED9B5299FC4F800DAC3B4 /* PokemonListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListModel.swift; sourceTree = "<group>"; };
 		BCFF11CE29967681005326B6 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		BCFF11D029969496005326B6 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				BC983F04298413A2006B91F1 /* Pokeball.swift */,
 				BC7508F929A90F6400297399 /* TypeTag.swift */,
+				BCC12CF729B2320F0059AAC7 /* TabBarComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				BC983F16298413A4006B91F1 /* APIRequest.swift in Sources */,
 				BC983ED629841268006B91F1 /* SceneDelegate.swift in Sources */,
 				BC983F1C298413A4006B91F1 /* CardView.swift in Sources */,
+				BCC12CF829B2320F0059AAC7 /* TabBarComponent.swift in Sources */,
 				BC983F1E298413A4006B91F1 /* HomeViewController.swift in Sources */,
 				BC983F18298413A4006B91F1 /* Coordinator.swift in Sources */,
 				BCFF11CF29967681005326B6 /* ListViewCell.swift in Sources */,

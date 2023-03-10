@@ -48,6 +48,23 @@ class DetailsViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var detailsPageViewController: TabBarComponent = {
+        let vc1 = UIViewController()
+        vc1.view.backgroundColor = .red
+        let vc2 = UIViewController()
+        vc2.view.backgroundColor = .green
+        let vc3 = UIViewController()
+        vc3.view.backgroundColor = .blue
+        let viewsDictionary: [String: UIViewController] = ["Red": vc1, "Green": vc2, "Blue": vc3]
+        let tabBarComponent = TabBarComponent(viewControllersWithTitle: viewsDictionary)
+        tabBarComponent.view.translatesAutoresizingMaskIntoConstraints = false
+        return tabBarComponent
+    }()
+    
+    private var detailsPageView: UIView {
+        detailsPageViewController.view
+    }
+    
     init(viewModel: DetailsViewModel) {
         self.viewModel = viewModel
         
@@ -64,8 +81,6 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         makeLayout()
-//        pokemonName.text = viewModel.pokemonName
-//        pokemonNumber.text = viewModel.pokemonPokedexNumber
     }
     
     private func makeLayout() {
@@ -73,6 +88,9 @@ class DetailsViewController: UIViewController {
         view.addSubview(pokemonNumber)
         view.addSubview(typesStackView)
         view.addSubview(pokemonImage)
+        view.addSubview(detailsPageView)
+
+        addChild(detailsPageViewController)
         
         let imageSize: CGFloat = view.bounds.size.width / 2
         
@@ -93,7 +111,13 @@ class DetailsViewController: UIViewController {
             pokemonImage.topAnchor.constraint(equalTo: typesStackView.bottomAnchor, constant: Constants.labelsToViewSpacing),
             pokemonImage.heightAnchor.constraint(equalToConstant: imageSize),
             pokemonImage.widthAnchor.constraint(equalToConstant: imageSize),
-            pokemonImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            pokemonImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            detailsPageView.topAnchor.constraint(equalTo: pokemonImage.bottomAnchor, constant: 20),
+            detailsPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailsPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailsPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            
         ])
     }
     
