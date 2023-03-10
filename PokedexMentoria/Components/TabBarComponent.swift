@@ -7,6 +7,11 @@
 
 import UIKit
 
+struct TabBarViews {
+    var title: String
+    var view: UIViewController
+}
+
 final class TabBarComponent: UIViewController {
     
     var currentIndex: Int = 1
@@ -41,9 +46,10 @@ final class TabBarComponent: UIViewController {
     private let viewControllers: [UIViewController]
     private let titles: [String]
     
-    init(viewControllersWithTitle: [String : UIViewController] ) {
-        self.titles = viewControllersWithTitle.keys.compactMap{$0}
-        self.viewControllers = viewControllersWithTitle.values.compactMap { $0 }
+    init(viewControllersWithTitle: [(title: String, viewController: UIViewController)] ) {
+        self.titles = viewControllersWithTitle.compactMap{ $0.title }
+        self.viewControllers = viewControllersWithTitle.compactMap { $0.viewController }
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -90,9 +96,7 @@ extension TabBarComponent: UIPageViewControllerDataSource {
         guard let actualIndex = viewControllers.firstIndex(of: viewController) else { return nil }
         let nextIndex = actualIndex + 1
         
-        guard nextIndex < viewControllers.count else {
-            return viewControllers.first }
-        guard viewControllers.count > nextIndex else { return nil }
+        guard nextIndex < viewControllers.count, viewControllers.count > nextIndex else { return nil }
         
         return viewControllers[nextIndex]
     }
@@ -101,9 +105,7 @@ extension TabBarComponent: UIPageViewControllerDataSource {
         guard let actualIndex = viewControllers.firstIndex(of: viewController) else { return nil }
         let previousIndex = actualIndex - 1
         
-        guard previousIndex >= 0  else {
-            return viewControllers.last }
-        guard viewControllers.count > previousIndex else { return nil }
+        guard previousIndex >= 0, viewControllers.count > previousIndex  else { return nil }
         
         return viewControllers[previousIndex]
     }
@@ -115,5 +117,7 @@ extension TabBarComponent: UIPageViewControllerDelegate {
         guard let vc = pendingViewControllers.first else { return }
         let nextIndex = viewControllers.firstIndex(of: vc) ?? 0
         segmentController.selectedSegmentIndex = nextIndex
+        
+        
     }
 }

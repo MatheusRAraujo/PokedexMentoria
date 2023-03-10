@@ -55,7 +55,7 @@ class DetailsViewController: UIViewController {
         vc2.view.backgroundColor = .green
         let vc3 = UIViewController()
         vc3.view.backgroundColor = .blue
-        let viewsDictionary: [String: UIViewController] = ["Red": vc1, "Green": vc2, "Blue": vc3]
+        let viewsDictionary: [(String, UIViewController)] = [("Info", vc1), ("Abilities", vc2), ("Others", vc3)]
         let tabBarComponent = TabBarComponent(viewControllersWithTitle: viewsDictionary)
         tabBarComponent.view.translatesAutoresizingMaskIntoConstraints = false
         return tabBarComponent
