@@ -5,8 +5,14 @@
 //  Created by Matheus Rodrigues Araujo on 24/02/23.
 //
 
+import Foundation
+
 protocol DetailsViewDelegate: AnyObject {
     func setUpInfo(model: PokemonModel)
+}
+
+protocol AbilitiesDetailsViewDelegate: AnyObject {
+    func setUpAbilities(abilities: [String])
 }
 
 final class DetailsViewModel {
@@ -14,6 +20,7 @@ final class DetailsViewModel {
     let pokemonNumber: Int
     weak var delegate: DetailsCoordinatorDelegate?
     var detailsDelegate: DetailsViewDelegate?
+    weak var abilitiesDelegate: AbilitiesDetailsViewDelegate?
     private let network = NetworkManager()
     var pokemonModel: PokemonModel?
     
@@ -29,6 +36,9 @@ final class DetailsViewModel {
             case .success(let pokemonModel):
                 self.pokemonModel = pokemonModel
                 self.detailsDelegate?.setUpInfo(model: pokemonModel)
+                DispatchQueue.main.async {
+                    self.abilitiesDelegate?.setUpAbilities(abilities: pokemonModel.abilities.compactMap{$0.ability.name})
+                }
                 print(self.pokemonModel)
             case .failure(let error):
                 print("Erro no details: \(error)")

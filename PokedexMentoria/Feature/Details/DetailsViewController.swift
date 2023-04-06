@@ -16,6 +16,7 @@ class DetailsViewController: UIViewController {
         label.text = "bla bla bla"
         label.font = UIFont.boldSystemFont(ofSize: Constants.nameFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -51,8 +52,11 @@ class DetailsViewController: UIViewController {
     private lazy var detailsPageViewController: TabBarComponent = {
         let vc1 = UIViewController()
         vc1.view.backgroundColor = .red
-        let vc2 = UIViewController()
-        vc2.view.backgroundColor = .green
+//        let vc2 = UIViewController()
+//        vc2.view.backgroundColor = .green
+        let vc2 = PokemonAbilitiesViewController(abilities: ["Ability 1","Abillity2", "hidden ability" ])
+        viewModel.abilitiesDelegate = vc2
+        vc2.view.backgroundColor = .white
         let vc3 = UIViewController()
         vc3.view.backgroundColor = .blue
         let viewsDictionary: [(String, UIViewController)] = [("Info", vc1), ("Abilities", vc2), ("Others", vc3)]
