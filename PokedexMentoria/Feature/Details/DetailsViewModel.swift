@@ -15,12 +15,17 @@ protocol AbilitiesDetailsViewDelegate: AnyObject {
     func setUpAbilities(abilities: [AbilityModel])
 }
 
+protocol InfoDetailsViewDelegate: AnyObject {
+    func setUpInfos(height: Int, weight: Int)
+}
+
 final class DetailsViewModel {
     
     let pokemonNumber: Int
     weak var delegate: DetailsCoordinatorDelegate?
     var detailsDelegate: DetailsViewDelegate?
     weak var abilitiesDelegate: AbilitiesDetailsViewDelegate?
+    weak var infoDelegate: InfoDetailsViewDelegate?
     private let network = NetworkManager()
     var pokemonModel: PokemonModel?
     
@@ -38,6 +43,7 @@ final class DetailsViewModel {
                 self.detailsDelegate?.setUpInfo(model: pokemonModel)
                 DispatchQueue.main.async {
                     self.abilitiesDelegate?.setUpAbilities(abilities: pokemonModel.abilities.compactMap{$0})
+                    self.infoDelegate?.setUpInfos(height: pokemonModel.height, weight: pokemonModel.weight)
                 }
                 print(self.pokemonModel)
             case .failure(let error):
