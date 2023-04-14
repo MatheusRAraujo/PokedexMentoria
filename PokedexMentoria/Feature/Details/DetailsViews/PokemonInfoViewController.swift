@@ -12,20 +12,19 @@ final class PokemonInfoViewController: UIViewController {
     private lazy var specieLabel: UILabel = {
         let label = UILabel()
         label.text = "Example Pokemon"
+        label.font = .systemFont(ofSize: 20.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var heightLabel: UILabel = {
         let label = UILabel()
-        label.text = "1234"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var weightLabel: UILabel = {
         let label = UILabel()
-        label.text = "5678"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,9 +36,6 @@ final class PokemonInfoViewController: UIViewController {
         label.text = "aljsbkjasbcjlasbdfieablabjhfb ajcs lajbcjehlbab askjaburiw ;iabfiaubdakbwkfawk  a ;fb awiufb.awbd;aw ca;c;owabuwaw!"
         return label
     }()
-    
-    
-    
     
     private func makeLayout() {
         view.addSubview(specieLabel)
