@@ -25,12 +25,11 @@ final class PokemonAbilityCell: UITableViewCell {
         return label
     }()
     
-    func setUp(abilityName: String) {
+    func setUp(ability: AbilityModel) {
         makeLayout()
-        
-            self.abilityNameLabel.text = abilityName
-            self.abilitySlotLabel.text = "slot X"
-        
+        let name = ability.ability.name.replacingOccurrences(of: "-", with: " ").capitalized
+        self.abilityNameLabel.text = name
+        self.abilitySlotLabel.text = ability.isHidden ? "Hidden Ability" : ""
     }
     
     override func prepareForReuse() {
@@ -50,7 +49,7 @@ final class PokemonAbilityCell: UITableViewCell {
             abilitySlotLabel.topAnchor.constraint(equalTo: abilityNameLabel.bottomAnchor, constant: 1),
             abilitySlotLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             abilitySlotLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            abilitySlotLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            abilitySlotLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
             
         ])
     }

@@ -18,14 +18,15 @@ final class PokemonAbilitiesViewController: UIViewController {
         tableView.register(PokemonAbilityCell.self, forCellReuseIdentifier: PokemonAbilityCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
         return tableView
     }()
     
     // Variables
-    var abilities: [String]
+    var abilities: [AbilityModel]
     
     // Initializers
-    init(abilities: [String]) {
+    init(abilities: [AbilityModel]) {
         self.abilities = abilities
         super.init(nibName: nil, bundle: nil)
     }
@@ -64,7 +65,7 @@ extension PokemonAbilitiesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PokemonAbilityCell.identifier, for: indexPath) as? PokemonAbilityCell else { return UITableViewCell() }
-        cell.setUp(abilityName: abilities[indexPath.row])
+        cell.setUp(ability: abilities[indexPath.row])
         return cell
     }
     
@@ -83,7 +84,7 @@ extension PokemonAbilitiesViewController: UITableViewDelegate {
 }
 
 extension PokemonAbilitiesViewController: AbilitiesDetailsViewDelegate {
-    func setUpAbilities(abilities: [String]) {
+    func setUpAbilities(abilities: [AbilityModel]) {
         self.abilities = abilities
         tableView.reloadData()
     }

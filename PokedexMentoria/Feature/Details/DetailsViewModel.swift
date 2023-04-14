@@ -12,7 +12,7 @@ protocol DetailsViewDelegate: AnyObject {
 }
 
 protocol AbilitiesDetailsViewDelegate: AnyObject {
-    func setUpAbilities(abilities: [String])
+    func setUpAbilities(abilities: [AbilityModel])
 }
 
 final class DetailsViewModel {
@@ -37,7 +37,7 @@ final class DetailsViewModel {
                 self.pokemonModel = pokemonModel
                 self.detailsDelegate?.setUpInfo(model: pokemonModel)
                 DispatchQueue.main.async {
-                    self.abilitiesDelegate?.setUpAbilities(abilities: pokemonModel.abilities.compactMap{$0.ability.name})
+                    self.abilitiesDelegate?.setUpAbilities(abilities: pokemonModel.abilities.compactMap{$0})
                 }
                 print(self.pokemonModel)
             case .failure(let error):
