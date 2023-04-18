@@ -17,6 +17,7 @@ protocol AbilitiesDetailsViewDelegate: AnyObject {
 
 protocol InfoDetailsViewDelegate: AnyObject {
     func setUpInfos(height: Int, weight: Int)
+    func setUpSpecieInfo(pokedexEntry: String)
 }
 
 final class DetailsViewModel {
@@ -46,6 +47,20 @@ final class DetailsViewModel {
                     self.infoDelegate?.setUpInfos(height: pokemonModel.height, weight: pokemonModel.weight)
                 }
                 print(self.pokemonModel)
+            case .failure(let error):
+                print("Erro no details: \(error)")
+            }
+        }
+        
+        network.fetch(request: PokemonAPI.pokemonSpecies(id: pokemonNumber)) { [weak self] (result: Result<PokemonSpeciesModel, Error>) in
+            guard let self else { return }
+            print("id is: \(self.pokemonNumber)")
+            switch result {
+            case .success(let pokemonSpeciesModel):
+                DispatchQueue.main.async {
+                    self.infoDelegate?.setUpSpecieInfo(pokedexEntry: pokemonSpeciesModel.flavorTextEntries[0].flavorText)
+                    print(pokemonSpeciesModel)
+                }
             case .failure(let error):
                 print("Erro no details: \(error)")
             }
