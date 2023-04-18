@@ -52,10 +52,8 @@ class DetailsViewController: UIViewController {
     private lazy var detailsPageViewController: TabBarComponent = {
         let vc1 = PokemonInfoViewController()
         viewModel.infoDelegate = vc1
-        vc1.view.backgroundColor = .white
         let vc2 = PokemonAbilitiesViewController(abilities: [AbilityModel(ability: AbilityNameModel(name: "placeholder"), isHidden: false)])
         viewModel.abilitiesDelegate = vc2
-        vc2.view.backgroundColor = .white
         let vc3 = UIViewController()
         vc3.view.backgroundColor = .blue
         let viewsDictionary: [(String, UIViewController)] = [("Info", vc1), ("Abilities", vc2), ("Others", vc3)]

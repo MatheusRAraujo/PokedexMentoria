@@ -43,6 +43,8 @@ final class PokemonAbilitiesViewController: UIViewController {
     }
     
     private func makeLayout() {
+        view.backgroundColor = .white
+        
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([

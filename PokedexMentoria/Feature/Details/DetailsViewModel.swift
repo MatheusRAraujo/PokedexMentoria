@@ -17,7 +17,7 @@ protocol AbilitiesDetailsViewDelegate: AnyObject {
 
 protocol InfoDetailsViewDelegate: AnyObject {
     func setUpInfos(height: Int, weight: Int)
-    func setUpSpecieInfo(pokedexEntry: String)
+    func setUpSpecieInfo(pokedexEntry: String, specieName: String)
 }
 
 final class DetailsViewModel {
@@ -28,7 +28,9 @@ final class DetailsViewModel {
     weak var abilitiesDelegate: AbilitiesDetailsViewDelegate?
     weak var infoDelegate: InfoDetailsViewDelegate?
     private let network = NetworkManager()
+    
     var pokemonModel: PokemonModel?
+    var pokemonSpecieModel: PokemonSpeciesModel?
     
     init(pokemonNumber: Int) {
         self.pokemonNumber = pokemonNumber
@@ -58,7 +60,8 @@ final class DetailsViewModel {
             switch result {
             case .success(let pokemonSpeciesModel):
                 DispatchQueue.main.async {
-                    self.infoDelegate?.setUpSpecieInfo(pokedexEntry: pokemonSpeciesModel.flavorTextEntries[0].flavorText)
+                    self.pokemonSpecieModel = pokemonSpeciesModel
+                    self.infoDelegate?.setUpSpecieInfo(pokedexEntry: self.pokedexEntry, specieName: self.specieName)
                     print(pokemonSpeciesModel)
                 }
             case .failure(let error):
@@ -73,6 +76,30 @@ final class DetailsViewModel {
     
     var pokemonPokedexNumber: String {
         pokemonModel?.id.stringWithFourCharacters ?? "#0000"
+    }
+    
+    var pokedexEntry: String {
+        guard let model = pokemonSpecieModel else { return ""}
+        var pokedexEntry = ""
+        for flavorEntry in model.flavorTextEntries {
+            if flavorEntry.language.name == "en" {
+                pokedexEntry = flavorEntry.flavorText
+                break
+            }
+        }
+        return pokedexEntry.replacingOccurrences(of: "\\s", with: " ", options: .regularExpression)
+    }
+    
+    var specieName: String {
+        guard let model = pokemonSpecieModel else { return ""}
+        var specieName = ""
+        for genus in model.genera {
+            if genus.language.name == "en" {
+                specieName = genus.genus
+                break
+            }
+        }
+        return specieName.replacingOccurrences(of: "\\s", with: " ", options: .regularExpression)
     }
     
     func getTypes() -> [Types] {

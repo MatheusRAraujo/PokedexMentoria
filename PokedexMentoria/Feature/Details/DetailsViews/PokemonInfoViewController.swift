@@ -11,7 +11,6 @@ final class PokemonInfoViewController: UIViewController {
     
     private lazy var specieLabel: UILabel = {
         let label = UILabel()
-        label.text = "Example Pokemon"
         label.font = .systemFont(ofSize: 20.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -33,11 +32,12 @@ final class PokemonInfoViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "aljsbkjasbcjlasbdfieablabjhfb ajcs lajbcjehlbab askjaburiw ;iabfiaubdakbwkfawk  a ;fb awiufb.awbd;aw ca;c;owabuwaw!"
         return label
     }()
     
     private func makeLayout() {
+        view.backgroundColor = .white
+        
         view.addSubview(specieLabel)
         view.addSubview(heightLabel)
         view.addSubview(weightLabel)
@@ -66,16 +66,13 @@ final class PokemonInfoViewController: UIViewController {
 }
 
 extension PokemonInfoViewController: InfoDetailsViewDelegate {
-    func setUpSpecieInfo(pokedexEntry: String) {
-        let formatedText = pokedexEntry.replacingOccurrences(of: "\\s", with: " ", options: .regularExpression)
-        print("entrada pra exibir:\(formatedText)")
-        pokedexEntryLabel.text = formatedText
-        
+    func setUpSpecieInfo(pokedexEntry: String, specieName: String) {
+        pokedexEntryLabel.text = pokedexEntry
+        specieLabel.text = specieName
     }
-    
+
     func setUpInfos(height: Int, weight: Int) {
         makeLayout()
-        print("Calling make up infos view")
         
         let heightInMeter = Double(height) / 10.0
         let weightInKilograms = Double(weight) / 10.0
