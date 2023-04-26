@@ -16,7 +16,7 @@ protocol AbilitiesDetailsViewDelegate: AnyObject {
 }
 
 protocol InfoDetailsViewDelegate: AnyObject {
-    func setUpInfos(height: Int, weight: Int)
+    func setUpInfos(height: String, weight: String)
     func setUpSpecieInfo(pokedexEntry: String, specieName: String)
 }
 
@@ -46,7 +46,7 @@ final class DetailsViewModel {
                 self.detailsDelegate?.setUpInfo(model: pokemonModel)
                 DispatchQueue.main.async {
                     self.abilitiesDelegate?.setUpAbilities(abilities: pokemonModel.abilities.compactMap{$0})
-                    self.infoDelegate?.setUpInfos(height: pokemonModel.height, weight: pokemonModel.weight)
+                    self.infoDelegate?.setUpInfos(height: self.height, weight: self.weight)
                 }
                 print(self.pokemonModel)
             case .failure(let error):
@@ -76,6 +76,16 @@ final class DetailsViewModel {
     
     var pokemonPokedexNumber: String {
         pokemonModel?.id.stringWithFourCharacters ?? "#0000"
+    }
+    
+    var height: String {
+        guard let intHeight = pokemonModel?.height else { return "" }
+        return "\(Double(intHeight) / 10) m"
+    }
+    
+    var weight: String {
+        guard let intWeight = pokemonModel?.weight else { return "" }
+        return "\(Double(intWeight) / 10) kg"
     }
     
     var pokedexEntry: String {

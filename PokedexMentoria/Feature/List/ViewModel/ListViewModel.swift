@@ -32,7 +32,7 @@ class ListViewModel {
             case .failure:
                 let feedBack = Feedback(image: UIImage(systemName: "house.fill")!,
                                         title: "Deu ruim",
-                                        text: "quero muito me mat4r!")
+                                        text: "erro ao criar a lista de pokemon")
                 self.coordinatorDelegate?.showFeedback(feedBack)
             }
         }

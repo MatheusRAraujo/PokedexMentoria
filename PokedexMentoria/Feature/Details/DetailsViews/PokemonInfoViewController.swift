@@ -11,21 +11,21 @@ final class PokemonInfoViewController: UIViewController {
     
     private lazy var specieLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20.0)
+        label.font = .systemFont(ofSize: Constants.specieLabelSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var heightLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var heightField: TextValue = {
+        let textValue = TextValue()
+        textValue.translatesAutoresizingMaskIntoConstraints = false
+        return textValue
     }()
     
-    private lazy var weightLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var weightField: TextValue = {
+        let textValue = TextValue()
+        textValue.translatesAutoresizingMaskIntoConstraints = false
+        return textValue
     }()
     
     private lazy var pokedexEntryLabel: UILabel = {
@@ -39,29 +39,41 @@ final class PokemonInfoViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(specieLabel)
-        view.addSubview(heightLabel)
-        view.addSubview(weightLabel)
+        view.addSubview(heightField)
+        view.addSubview(weightField)
         view.addSubview(pokedexEntryLabel)
         
         NSLayoutConstraint.activate([
-            specieLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            specieLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            specieLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            specieLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.specieLabelTopConstraint),
+            specieLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
+            specieLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalSpacing),
+
+            heightField.topAnchor.constraint(equalTo: specieLabel.bottomAnchor, constant: Constants.heightFieldDistance),
+            heightField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
+            heightField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalSpacing),
             
-            heightLabel.topAnchor.constraint(equalTo: specieLabel.bottomAnchor, constant: 10),
-            heightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            heightLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-            weightLabel.topAnchor.constraint(equalTo: heightLabel.bottomAnchor, constant: 10),
-            weightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            weightLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            
-            pokedexEntryLabel.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 10),
-            pokedexEntryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            pokedexEntryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            pokedexEntryLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -10)
+            weightField.topAnchor.constraint(equalTo: heightField.bottomAnchor, constant: Constants.weightFieldDistance),
+            weightField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
+            weightField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalSpacing),
+
+            pokedexEntryLabel.topAnchor.constraint(equalTo: weightField.bottomAnchor, constant: Constants.pokedexEntryDistance),
+            pokedexEntryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
+            pokedexEntryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalSpacing),
+            pokedexEntryLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor,
+                                                      constant: -Constants.pokedexEntryBottonConstraint)
             
         ])
+    }
+    
+    struct Constants {
+        static let specieLabelSize: CGFloat = 20
+        
+        static let horizontalSpacing: CGFloat = 20
+        static let specieLabelTopConstraint: CGFloat = 20
+        static let heightFieldDistance: CGFloat = 20
+        static let weightFieldDistance: CGFloat = 10
+        static let pokedexEntryDistance: CGFloat = 30
+        static let pokedexEntryBottonConstraint: CGFloat = 10
     }
 }
 
@@ -71,13 +83,10 @@ extension PokemonInfoViewController: InfoDetailsViewDelegate {
         specieLabel.text = specieName
     }
 
-    func setUpInfos(height: Int, weight: Int) {
+    func setUpInfos(height: String, weight: String) {
         makeLayout()
         
-        let heightInMeter = Double(height) / 10.0
-        let weightInKilograms = Double(weight) / 10.0
-        
-        heightLabel.text = "Height: \(heightInMeter) m"
-        weightLabel.text = "Weight: \(weightInKilograms) kg"
+        heightField.setUpFields(fieldName: "Height:", fieldValue: height)
+        weightField.setUpFields(fieldName: "Weight:", fieldValue: weight)
     }
 }
