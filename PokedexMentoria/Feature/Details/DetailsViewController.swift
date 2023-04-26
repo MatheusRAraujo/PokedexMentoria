@@ -13,7 +13,6 @@ class DetailsViewController: UIViewController {
     
     private lazy var pokemonName: UILabel = {
         let label = UILabel()
-        label.text = "bla bla bla"
         label.font = UIFont.boldSystemFont(ofSize: Constants.nameFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -22,7 +21,6 @@ class DetailsViewController: UIViewController {
     
     private lazy var pokemonNumber: UILabel = {
         let label = UILabel()
-        label.text = "#----"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -75,7 +73,7 @@ class DetailsViewController: UIViewController {
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     override func viewDidLoad() {

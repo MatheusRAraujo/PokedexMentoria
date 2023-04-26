@@ -31,20 +31,17 @@ final class PokemonAbilitiesViewController: UIViewController {
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
     
     // Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeLayout()
-        //        tableView.reloadData()
     }
     
     private func makeLayout() {
         view.backgroundColor = .white
-        
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -54,7 +51,6 @@ final class PokemonAbilitiesViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
 }
 
 extension PokemonAbilitiesViewController: UITableViewDataSource {
@@ -88,6 +84,5 @@ extension PokemonAbilitiesViewController: AbilitiesDetailsViewDelegate {
         self.abilities = abilities
         tableView.reloadData()
     }
-    
-    
+
 }

@@ -11,7 +11,7 @@ final class PokemonInfoViewController: UIViewController {
     
     private lazy var specieLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: Constants.specieLabelSize)
+        label.font = .boldSystemFont(ofSize: Constants.specieLabelSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
