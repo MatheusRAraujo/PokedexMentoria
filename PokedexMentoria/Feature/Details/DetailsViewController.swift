@@ -52,9 +52,9 @@ class DetailsViewController: UIViewController {
         viewModel.infoDelegate = vc1
         let vc2 = PokemonAbilitiesViewController(abilities: [AbilityModel(ability: AbilityNameModel(name: "placeholder"), isHidden: false)])
         viewModel.abilitiesDelegate = vc2
-        let vc3 = UIViewController()
-        vc3.view.backgroundColor = .blue
-        let viewsDictionary: [(String, UIViewController)] = [("Info", vc1), ("Abilities", vc2), ("Others", vc3)]
+        let vc3 = StatsViewController()
+        vc3.view.backgroundColor = .white
+        let viewsDictionary: [(String, UIViewController)] = [("Info", vc1), ("Abilities", vc2), ("Base Stats", vc3)]
         let tabBarComponent = TabBarComponent(viewControllersWithTitle: viewsDictionary)
         tabBarComponent.view.translatesAutoresizingMaskIntoConstraints = false
         return tabBarComponent

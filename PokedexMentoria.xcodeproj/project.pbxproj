@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC10682429F946DA005C5704 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC10682329F946DA005C5704 /* StatsViewController.swift */; };
+		BC10682629F947E8005C5704 /* ProgressBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC10682529F947E8005C5704 /* ProgressBarCell.swift */; };
 		BC31F38729843E4E0097C582 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38629843E4E0097C582 /* ListViewModel.swift */; };
 		BC31F38B29845C440097C582 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38A29845C440097C582 /* FeedbackViewController.swift */; };
 		BC7508F429A8E55100297399 /* DetailsCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7508F329A8E55100297399 /* DetailsCoodinator.swift */; };
@@ -64,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC10682329F946DA005C5704 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		BC10682529F947E8005C5704 /* ProgressBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCell.swift; sourceTree = "<group>"; };
 		BC31F38629843E4E0097C582 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		BC31F38A29845C440097C582 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		BC7508F329A8E55100297399 /* DetailsCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoodinator.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				BC7508F929A90F6400297399 /* TypeTag.swift */,
 				BCC12CF729B2320F0059AAC7 /* TabBarComponent.swift */,
 				BC82690A29F7EE85009D402C /* TextValue.swift */,
+				BC10682529F947E8005C5704 /* ProgressBarCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				BCEF14EB29D71B8200DB804D /* PokemonAbilitiesViewController.swift */,
 				BCEF14ED29D71E5800DB804D /* PokemonAbilityCell.swift */,
 				BC8F6B5529E99478002FBE3E /* PokemonInfoViewController.swift */,
+				BC10682329F946DA005C5704 /* StatsViewController.swift */,
 			);
 			path = DetailsViews;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC983F242984193E006B91F1 /* ListCoordinator.swift in Sources */,
+				BC10682429F946DA005C5704 /* StatsViewController.swift in Sources */,
 				BC7508FC29A92B3000297399 /* PokemonModel.swift in Sources */,
 				BC7508F629A8E56800297399 /* DetailsViewController.swift in Sources */,
 				BC983F15298413A4006B91F1 /* NetworkManager.swift in Sources */,
@@ -478,6 +485,7 @@
 				BCFF11D129969496005326B6 /* Int+Extensions.swift in Sources */,
 				BCEF14EC29D71B8200DB804D /* PokemonAbilitiesViewController.swift in Sources */,
 				BC7508F829A8E5F900297399 /* DetailsViewModel.swift in Sources */,
+				BC10682629F947E8005C5704 /* ProgressBarCell.swift in Sources */,
 				BC983ED429841268006B91F1 /* AppDelegate.swift in Sources */,
 				BC8F6B5929E99F6B002FBE3E /* PokemonSpeciesModel.swift in Sources */,
 				BCFED9B6299FC4F800DAC3B4 /* PokemonListModel.swift in Sources */,
