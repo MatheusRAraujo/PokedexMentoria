@@ -94,7 +94,7 @@ class DetailsViewController: UIViewController {
         let imageSize: CGFloat = view.bounds.size.width / 2
         
         NSLayoutConstraint.activate([
-            pokemonName.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.topSpacing),
+            pokemonName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.topSpacing),
             pokemonName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
             pokemonName.heightAnchor.constraint(equalToConstant: Constants.labelHeight),
             
@@ -123,7 +123,7 @@ class DetailsViewController: UIViewController {
     enum Constants {
         static let nameFontSize: CGFloat = 20
         
-        static let topSpacing: CGFloat = 100
+        static let topSpacing: CGFloat = 10
         static let labelHeight: CGFloat = 40
         static let horizontalSpacing: CGFloat = 30
         static let labelsToViewSpacing: CGFloat = 20

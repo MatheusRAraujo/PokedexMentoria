@@ -21,6 +21,16 @@ final class StatsViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Variables
+    
+    var stats:[Stats] = [Stats(stat: .hp, value: 170),
+                         Stats(stat: .attack, value: 30),
+                         Stats(stat: .defense, value: 80),
+                         Stats(stat: .specialAttack, value: 130),
+                         Stats(stat: .specialDefense,value: 50),
+                         Stats(stat: .speed, value: 90)
+    ]
+    
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +44,7 @@ final class StatsViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
     
@@ -43,11 +53,12 @@ final class StatsViewController: UIViewController {
 extension StatsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        6
+        stats.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProgressBarCell.identifier, for: indexPath) as? ProgressBarCell else { return UITableViewCell() }
-        cell.setUpProgressBar(title: "hp", progressValue: Float(indexPath.row) / Float(6) )
+        cell.setUpProgressBar(stats: stats[indexPath.row])
         return cell
     }
     
@@ -56,7 +67,7 @@ extension StatsViewController: UITableViewDataSource {
 extension StatsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        UITableView.automaticDimension
-        return 60
+        return 55
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
