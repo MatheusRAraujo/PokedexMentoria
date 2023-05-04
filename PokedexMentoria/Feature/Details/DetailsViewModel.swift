@@ -20,6 +20,10 @@ protocol InfoDetailsViewDelegate: AnyObject {
     func setUpSpecieInfo(pokedexEntry: String, specieName: String)
 }
 
+protocol StatsViewDelegate: AnyObject {
+    func setUpStats(baseStatus: [BaseStats])
+}
+
 final class DetailsViewModel {
     
     let pokemonNumber: Int
@@ -27,6 +31,7 @@ final class DetailsViewModel {
     var detailsDelegate: DetailsViewDelegate?
     weak var abilitiesDelegate: AbilitiesDetailsViewDelegate?
     weak var infoDelegate: InfoDetailsViewDelegate?
+    weak var statsDelegate: StatsViewDelegate?
     private let network = NetworkManager()
     
     var pokemonModel: PokemonModel?
@@ -47,6 +52,7 @@ final class DetailsViewModel {
                 DispatchQueue.main.async {
                     self.abilitiesDelegate?.setUpAbilities(abilities: pokemonModel.abilities.compactMap{$0})
                     self.infoDelegate?.setUpInfos(height: self.height, weight: self.weight)
+                    self.statsDelegate?.setUpStats(baseStatus: self.baseStats)
                 }
                 print(self.pokemonModel)
             case .failure(let error):
@@ -110,6 +116,30 @@ final class DetailsViewModel {
             }
         }
         return specieName.replacingOccurrences(of: "\\s", with: " ", options: .regularExpression)
+    }
+    
+    var baseStats: [BaseStats] {
+        var baseStats: [BaseStats] = []
+        guard let statsModel = pokemonModel?.stats else {return []}
+        for stat in statsModel {
+            switch stat.stat.name {
+            case "hp":
+                baseStats.append(BaseStats(stat: .hp, value: stat.baseStat))
+            case "attack":
+                baseStats.append(BaseStats(stat: .attack, value: stat.baseStat))
+            case "defense":
+                baseStats.append(BaseStats(stat: .defense, value: stat.baseStat))
+            case "special-attack":
+                baseStats.append(BaseStats(stat: .specialAttack, value: stat.baseStat))
+            case "special-defense":
+                baseStats.append(BaseStats(stat: .specialDefense, value: stat.baseStat))
+            case "speed":
+                baseStats.append(BaseStats(stat: .speed, value: stat.baseStat))
+            default:
+                print("stats not found")
+            }
+        }
+        return baseStats
     }
     
     func getTypes() -> [Types] {

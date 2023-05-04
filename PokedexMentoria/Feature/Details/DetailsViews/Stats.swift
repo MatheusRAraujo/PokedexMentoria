@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct Stats {
+struct BaseStats {
 
-    enum Stat: String {
+    enum BaseStat: String {
         case hp = "HP"
         case attack = "Attack"
         case defense = "Defense"
@@ -20,7 +20,7 @@ struct Stats {
     
     var maxStatus: Int = 255
 
-    var stat: Stat
+    var stat: BaseStat
     var value: Int
     
     var progress: Float {
@@ -31,7 +31,7 @@ struct Stats {
         "\(value)"
     }
     
-    init(stat: Stat, value: Int) {
+    init(stat: BaseStat, value: Int) {
         self.stat = stat
         self.value = value
     }

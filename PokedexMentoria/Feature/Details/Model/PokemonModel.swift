@@ -12,6 +12,7 @@ struct PokemonModel: Codable {
     let weight: Int
     let types: [TypeModel]
     let abilities: [AbilityModel]
+    let stats: [Stats]
 }
 
 struct TypeModel: Codable {
@@ -35,3 +36,18 @@ struct AbilityModel: Codable {
 struct AbilityNameModel: Codable {
     let name: String
 }
+
+struct Stats: Codable {
+    var baseStat: Int
+    var stat: Stat
+    
+    enum codingKeys: String, CodingKey {
+        case baseStats = "base_stat"
+        case stat
+    }
+}
+
+struct Stat: Codable {
+    var name: String
+}
+

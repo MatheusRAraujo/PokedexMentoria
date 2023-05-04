@@ -23,13 +23,7 @@ final class StatsViewController: UIViewController {
     
     // MARK: - Variables
     
-    var stats:[Stats] = [Stats(stat: .hp, value: 170),
-                         Stats(stat: .attack, value: 30),
-                         Stats(stat: .defense, value: 80),
-                         Stats(stat: .specialAttack, value: 130),
-                         Stats(stat: .specialDefense,value: 50),
-                         Stats(stat: .speed, value: 90)
-    ]
+    var stats: [BaseStats] = []
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -73,4 +67,13 @@ extension StatsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
     }
+}
+
+extension StatsViewController: StatsViewDelegate {
+    
+    func setUpStats(baseStatus: [BaseStats]) {
+        self.stats = baseStatus
+        self.tableView.reloadData()
+    }
+    
 }

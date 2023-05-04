@@ -36,7 +36,7 @@ final class ProgressBarCell: UITableViewCell {
         return progressView
     }()
     
-    func setUpProgressBar(stats: Stats) {
+    func setUpProgressBar(stats: BaseStats) {
         makeLayout()
         self.title.text = stats.stat.rawValue
         self.progressView.progress = stats.progress
@@ -61,7 +61,7 @@ final class ProgressBarCell: UITableViewCell {
             
             statsValue.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 2),
             statsValue.leadingAnchor.constraint(equalTo: leadingAnchor),
-            statsValue.widthAnchor.constraint(equalToConstant: 30),
+            statsValue.widthAnchor.constraint(equalToConstant: 40),
             statsValue.heightAnchor.constraint(equalToConstant: 15),
             
             progressView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 2),
