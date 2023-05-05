@@ -121,6 +121,7 @@ extension DetailsViewController: DetailsViewDelegate {
         DispatchQueue.main.async {
             self.pokemonNumber.text = self.viewModel.pokemonPokedexNumber
             self.pokemonName.text = self.viewModel.pokemonName
+            self.view.backgroundColor = self.viewModel.backgroundColor
             
             self.typesStackView.arrangedSubviews.forEach { view in
                 view.removeFromSuperview()

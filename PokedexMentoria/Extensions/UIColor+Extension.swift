@@ -22,7 +22,7 @@ extension UIColor {
     static let eletricMedium = UIColor(red: 248, green: 208, blue: 48)
     
     static let fairyLight = UIColor(red: 244, green: 189, blue: 201)
-    static let faityMedium = UIColor(red: 238, green: 153, blue: 172)
+    static let fairyMedium = UIColor(red: 238, green: 153, blue: 172)
     
     static let fightingLight = UIColor(red: 214, green: 120, blue: 115)
     static let fightingMedium = UIColor(red: 192, green: 48, blue: 40)

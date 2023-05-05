@@ -85,7 +85,7 @@ enum Types: String {
         case .electric:
             return .eletricMedium
         case .fairy:
-            return .faityMedium
+            return .fairyMedium
         case .figthing:
             return .fightingMedium
         case .fire:

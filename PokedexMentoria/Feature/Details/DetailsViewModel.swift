@@ -5,7 +5,7 @@
 //  Created by Matheus Rodrigues Araujo on 24/02/23.
 //
 
-import Foundation
+import UIKit
 
 protocol DetailsViewDelegate: AnyObject {
     func setUpInfo(model: PokemonModel)
@@ -153,4 +153,46 @@ final class DetailsViewModel {
         return baseStats
     }
     
+    var backgroundColor: UIColor {
+        switch pokemonTypes.first {
+        case .bug:
+            return .bugLight
+        case .dark:
+            return .darkLight
+        case .dragon:
+            return .dragonLight
+        case .electric:
+            return .eletricLight
+        case .fairy:
+            return .fairyLight
+        case .figthing:
+            return .fightingLight
+        case .fire:
+            return .fireLight
+        case .flying:
+            return .flyingLight
+        case .ghost:
+            return .ghostLight
+        case .grass:
+            return .grassLight
+        case .ground:
+            return .groundLight
+        case .ice:
+            return .iceLight
+        case .iron:
+            return .steelLight
+        case .normal:
+            return .normalLight
+        case .poison:
+            return .poisonLight
+        case .psychic:
+            return .psychicLight
+        case .rock:
+            return .rockLight
+        case .water:
+            return .waterLight
+        default:
+            return .white
+        }
+    }
 }
