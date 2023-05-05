@@ -11,14 +11,15 @@ final class TypeTag: UILabel {
     
     init(type: Types) {
         super.init(frame: .zero)
-        self.text = " \(type.rawValue)"
+        self.text = " \(type.typeName)"
+        self.textColor = type.textColor
         self.backgroundColor = type.typeColor
         configureText()
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
     
     private func configureText() {
@@ -27,41 +28,90 @@ final class TypeTag: UILabel {
         layer.borderColor = UIColor.black.cgColor
         layer.cornerRadius = 5.0
         clipsToBounds = true
+        
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: 72),
+            heightAnchor.constraint(equalToConstant: 20)
+        ])
     }
     
 }
 
 enum Types: String {
     
-    case dragon = "Dragon"
-    case figthing = "Figthing"
-    case ghost = "Ghost"
-    case poison = "Poison"
-    case bug = "Bug"
-    case water = "Water"
-    case rock = "Rock"
-    case fire = "Fire"
-    case grass = "Grass"
-    case ice = "Ice"
-    case normal = "Normal"
-    case flying = "Flying"
-    case iron = "Iron"
-    case dark = "Dark"
-    case psychic = "Psychic"
-    case ground = "Ground"
-    case eletric = "Eletric"
-    case fairy = "Fairy"
+    case bug
+    case dark
+    case dragon
+    case electric
+    case fairy
+    case figthing
+    case fire
+    case flying
+    case ghost
+    case grass
+    case ground
+    case ice
+    case normal
+    case poison
+    case psychic
+    case rock
+    case iron
+    case water
+    
+    var typeName: String {
+        if self == .iron {
+            return "Stell"
+        }
+        return rawValue.capitalized
+    }
+    
+    var textColor: UIColor {
+        switch self {
+        case .electric, .iron, .ice, .ground:
+            return .black
+        default:
+            return .white
+        }
+    }
     
     var typeColor: UIColor {
         switch self {
+        case .bug:
+            return .bugMedium
+        case .dark:
+            return .darkMedium
+        case .dragon:
+            return .dragonMedium
+        case .electric:
+            return .eletricMedium
+        case .fairy:
+            return .faityMedium
+        case .figthing:
+            return .fightingMedium
         case .fire:
-            return .systemRed
-        case .water:
-            return .systemBlue
+            return .fireMedium
+        case .flying:
+            return .flyingMedium
+        case .ghost:
+            return .ghostMedium
         case .grass:
-            return .systemGreen
-        default:
-            return .gray
+            return .grassMedium
+        case .ground:
+            return .groundMedium
+        case .ice:
+            return .iceMedium
+        case .iron:
+            return .steelMedium
+        case .normal:
+            return .normalMedium
+        case .poison:
+            return .poisonMedium
+        case .psychic:
+            return .psychicMedium
+        case .rock:
+            return .rockMedium
+        case .water:
+            return .waterMedium
         }
     }
 

@@ -84,6 +84,17 @@ final class DetailsViewModel {
         pokemonModel?.id.stringWithFourCharacters ?? "#0000"
     }
     
+    var pokemonTypes: [Types] {
+        var pokemonTypes: [Types] = []
+        guard let modelTypes = pokemonModel?.types else { return [] }
+        for typeModel in modelTypes {
+            if let type = Types(rawValue: typeModel.type.name) {
+                pokemonTypes.append(type)
+            }
+        }
+        return pokemonTypes
+    }
+    
     var height: String {
         guard let intHeight = pokemonModel?.height else { return "" }
         return "\(Double(intHeight) / 10) m"
@@ -140,10 +151,6 @@ final class DetailsViewModel {
             }
         }
         return baseStats
-    }
-    
-    func getTypes() -> [Types] {
-        [.water, .fire]
     }
     
 }

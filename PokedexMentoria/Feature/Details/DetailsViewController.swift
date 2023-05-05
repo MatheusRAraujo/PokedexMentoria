@@ -13,7 +13,7 @@ class DetailsViewController: UIViewController {
     
     private lazy var pokemonName: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: Constants.nameFontSize)
+        label.font = UIFont.boldSystemFont(ofSize: .nameFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -26,15 +26,10 @@ class DetailsViewController: UIViewController {
     }()
     
     private lazy var typesStackView: UIStackView = {
-        let types = viewModel.getTypes()
-        var typeCards: [TypeTag] = []
-        for type in types {
-            typeCards.append(TypeTag(type: type))
-        }
-        let stackView = UIStackView(arrangedSubviews: typeCards)
+        let stackView = UIStackView(arrangedSubviews: [])
         stackView.axis = .horizontal
         stackView.spacing = 5
-        stackView.distribution = .fillEqually
+        stackView.alignment = .leading
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -89,26 +84,25 @@ class DetailsViewController: UIViewController {
         view.addSubview(typesStackView)
         view.addSubview(pokemonImage)
         view.addSubview(detailsPageView)
-
+        
         addChild(detailsPageViewController)
         
         let imageSize: CGFloat = view.bounds.size.width / 2
         
         NSLayoutConstraint.activate([
-            pokemonName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.topSpacing),
-            pokemonName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
-            pokemonName.heightAnchor.constraint(equalToConstant: Constants.labelHeight),
+            pokemonName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .topSpacing),
+            pokemonName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .horizontalSpacing),
+            pokemonName.heightAnchor.constraint(equalToConstant: .labelHeight),
             
-            pokemonNumber.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.topSpacing),
-            pokemonNumber.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.horizontalSpacing),
-            pokemonNumber.heightAnchor.constraint(equalToConstant: Constants.labelHeight),
+            pokemonNumber.topAnchor.constraint(equalTo: view.topAnchor, constant: .topSpacing),
+            pokemonNumber.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.horizontalSpacing),
+            pokemonNumber.heightAnchor.constraint(equalToConstant: .labelHeight),
             
             typesStackView.topAnchor.constraint(equalTo: pokemonName.bottomAnchor, constant: 5),
-            typesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.horizontalSpacing),
-            typesStackView.heightAnchor.constraint(equalToConstant: 20),
-            typesStackView.widthAnchor.constraint(equalToConstant: 150),
+            typesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .horizontalSpacing),
+            typesStackView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -.horizontalSpacing),
             
-            pokemonImage.topAnchor.constraint(equalTo: typesStackView.bottomAnchor, constant: Constants.labelsToViewSpacing),
+            pokemonImage.topAnchor.constraint(equalTo: typesStackView.bottomAnchor, constant: .labelsToViewSpacing),
             pokemonImage.heightAnchor.constraint(equalToConstant: imageSize),
             pokemonImage.widthAnchor.constraint(equalToConstant: imageSize),
             pokemonImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -120,16 +114,6 @@ class DetailsViewController: UIViewController {
             
         ])
     }
-    
-    enum Constants {
-        static let nameFontSize: CGFloat = 20
-        
-        static let topSpacing: CGFloat = 10
-        static let labelHeight: CGFloat = 40
-        static let horizontalSpacing: CGFloat = 30
-        static let labelsToViewSpacing: CGFloat = 20
-    }
-
 }
 
 extension DetailsViewController: DetailsViewDelegate {
@@ -137,8 +121,24 @@ extension DetailsViewController: DetailsViewDelegate {
         DispatchQueue.main.async {
             self.pokemonNumber.text = self.viewModel.pokemonPokedexNumber
             self.pokemonName.text = self.viewModel.pokemonName
+            
+            self.typesStackView.arrangedSubviews.forEach { view in
+                view.removeFromSuperview()
+            }
+            for type in self.viewModel.pokemonTypes {
+                let typeCard = TypeTag(type: type)
+                self.typesStackView.addArrangedSubview(typeCard)
+            }
         }
     }
     
+}
+
+fileprivate extension CGFloat {
+    static let nameFontSize: CGFloat = 20
     
+    static let topSpacing: CGFloat = 10
+    static let labelHeight: CGFloat = 40
+    static let horizontalSpacing: CGFloat = 30
+    static let labelsToViewSpacing: CGFloat = 20
 }
