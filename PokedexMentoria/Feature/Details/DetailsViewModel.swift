@@ -8,7 +8,8 @@
 import UIKit
 
 protocol DetailsViewDelegate: AnyObject {
-    func setUpInfo(model: PokemonModel)
+    func setUpInfo()
+    func setUpImage()
 }
 
 protocol AbilitiesDetailsViewDelegate: AnyObject {
@@ -36,6 +37,7 @@ final class DetailsViewModel {
     
     var pokemonModel: PokemonModel?
     var pokemonSpecieModel: PokemonSpeciesModel?
+    var imageData: Data?
     
     init(pokemonNumber: Int) {
         self.pokemonNumber = pokemonNumber
@@ -48,7 +50,7 @@ final class DetailsViewModel {
             switch result {
             case .success(let pokemonModel):
                 self.pokemonModel = pokemonModel
-                self.detailsDelegate?.setUpInfo(model: pokemonModel)
+                self.detailsDelegate?.setUpInfo()
                 DispatchQueue.main.async {
                     self.abilitiesDelegate?.setUpAbilities(abilities: pokemonModel.abilities.compactMap{$0})
                     self.infoDelegate?.setUpInfos(height: self.height, weight: self.weight)
@@ -74,6 +76,19 @@ final class DetailsViewModel {
                 print("Erro no details: \(error)")
             }
         }
+        
+        network.fetchImage(request: PokemonImageAPI.image(id: pokemonNumber)) { [weak self] (result: Result<Data, Error>) in
+            guard let self else {return}
+            switch result {
+            case .success(let imageData):
+                DispatchQueue.main.async {
+                    self.imageData = imageData
+                    self.detailsDelegate?.setUpImage()
+                }
+            case .failure(let error):
+                print("Error in api image dowload: \(error)")
+            }
+        }
     }
     
     var pokemonName: String {
@@ -82,6 +97,11 @@ final class DetailsViewModel {
     
     var pokemonPokedexNumber: String {
         pokemonModel?.id.stringWithFourCharacters ?? "#0000"
+    }
+    
+    var pokemonImage: UIImage {
+        guard let data = imageData, let image = UIImage(data: data) else { return UIImage() }
+        return image
     }
     
     var pokemonTypes: [Types] {

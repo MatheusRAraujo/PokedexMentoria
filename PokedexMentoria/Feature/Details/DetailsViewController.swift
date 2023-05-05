@@ -111,13 +111,13 @@ class DetailsViewController: UIViewController {
             detailsPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             detailsPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             detailsPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
         ])
     }
 }
 
 extension DetailsViewController: DetailsViewDelegate {
-    func setUpInfo(model: PokemonModel) {
+    
+    func setUpInfo() {
         DispatchQueue.main.async {
             self.pokemonNumber.text = self.viewModel.pokemonPokedexNumber
             self.pokemonName.text = self.viewModel.pokemonName
@@ -130,6 +130,12 @@ extension DetailsViewController: DetailsViewDelegate {
                 let typeCard = TypeTag(type: type)
                 self.typesStackView.addArrangedSubview(typeCard)
             }
+        }
+    }
+    
+    func setUpImage() {
+        DispatchQueue.main.async {
+            self.pokemonImage.image = self.viewModel.pokemonImage
         }
     }
     

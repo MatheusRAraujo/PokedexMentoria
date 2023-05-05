@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC10682429F946DA005C5704 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC10682329F946DA005C5704 /* StatsViewController.swift */; };
 		BC10682629F947E8005C5704 /* ProgressBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC10682529F947E8005C5704 /* ProgressBarCell.swift */; };
+		BC193E862A054E250010E85F /* PokemonImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC193E852A054E250010E85F /* PokemonImageAPI.swift */; };
 		BC31F38729843E4E0097C582 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38629843E4E0097C582 /* ListViewModel.swift */; };
 		BC31F38B29845C440097C582 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38A29845C440097C582 /* FeedbackViewController.swift */; };
 		BC5E08F82A03D4FE00C0FCB6 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E08F72A03D4FE00C0FCB6 /* Stats.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		BC10682329F946DA005C5704 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		BC10682529F947E8005C5704 /* ProgressBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarCell.swift; sourceTree = "<group>"; };
+		BC193E852A054E250010E85F /* PokemonImageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonImageAPI.swift; sourceTree = "<group>"; };
 		BC31F38629843E4E0097C582 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		BC31F38A29845C440097C582 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		BC5E08F72A03D4FE00C0FCB6 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				BC983F06298413A3006B91F1 /* NetworkManager.swift */,
 				BC983F07298413A3006B91F1 /* APIRequest.swift */,
 				BC983F08298413A3006B91F1 /* PokemonAPI.swift */,
+				BC193E852A054E250010E85F /* PokemonImageAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				BC7508FA29A90F6400297399 /* TypeTag.swift in Sources */,
 				BC983F1A298413A4006B91F1 /* UIColor+Extension.swift in Sources */,
 				BC983F1B298413A4006B91F1 /* CGFloat+Tokens.swift in Sources */,
+				BC193E862A054E250010E85F /* PokemonImageAPI.swift in Sources */,
 				BC983F1F298413A4006B91F1 /* HomeCoordinator.swift in Sources */,
 				BC31F38B29845C440097C582 /* FeedbackViewController.swift in Sources */,
 				BC983F1D298413A4006B91F1 /* PokeballCard.swift in Sources */,

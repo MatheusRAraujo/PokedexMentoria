@@ -9,6 +9,7 @@ import Foundation
 
 class NetworkManager {
     let baseUrl = "https://pokeapi.co/api/v2/"
+    let baseImageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/"
     private let session = URLSession(configuration: .default)
     
     func fetch<T: Codable>(request: APIRequest, completion: @escaping((Result<T, Error>) -> Void)) {
@@ -33,6 +34,22 @@ class NetworkManager {
         task.resume()
     }
     
+    func fetchImage(request: APIRequest, completion: @escaping((Result<Data, Error>) -> Void)) {
+        guard let imageStringURL: URL = URL(string: baseImageURL + request.path) else { return }
+        let urlRequest = URLRequest(url: imageStringURL)
+        let task = session.dataTask(with: urlRequest) { [weak self] data, response, error in
+            guard let _ = self else { return }
+            if let error {
+                completion(.failure(error))
+            } else {
+                if let data {
+                    completion(.success(data))
+                }
+            }
+        }
+        task.resume()
+    }
+    
     private func decodeSafeData<T: Codable> (decoder: JSONDecoder, _ data: Data) throws -> T {
         do {
             return try decoder.decode(T.self, from: data)
@@ -41,5 +58,4 @@ class NetworkManager {
         }
     }
 }
-
 
