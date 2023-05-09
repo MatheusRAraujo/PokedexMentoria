@@ -13,6 +13,7 @@
 		BC31F38729843E4E0097C582 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38629843E4E0097C582 /* ListViewModel.swift */; };
 		BC31F38B29845C440097C582 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31F38A29845C440097C582 /* FeedbackViewController.swift */; };
 		BC5E08F82A03D4FE00C0FCB6 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E08F72A03D4FE00C0FCB6 /* Stats.swift */; };
+		BC65763A2A0A68F20063066C /* DiagonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6576392A0A68F20063066C /* DiagonalView.swift */; };
 		BC7508F429A8E55100297399 /* DetailsCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7508F329A8E55100297399 /* DetailsCoodinator.swift */; };
 		BC7508F629A8E56800297399 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7508F529A8E56800297399 /* DetailsViewController.swift */; };
 		BC7508F829A8E5F900297399 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7508F729A8E5F900297399 /* DetailsViewModel.swift */; };
@@ -74,6 +75,7 @@
 		BC31F38629843E4E0097C582 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		BC31F38A29845C440097C582 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		BC5E08F72A03D4FE00C0FCB6 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		BC6576392A0A68F20063066C /* DiagonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagonalView.swift; sourceTree = "<group>"; };
 		BC7508F329A8E55100297399 /* DetailsCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCoodinator.swift; sourceTree = "<group>"; };
 		BC7508F529A8E56800297399 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		BC7508F729A8E5F900297399 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				BCC12CF729B2320F0059AAC7 /* TabBarComponent.swift */,
 				BC82690A29F7EE85009D402C /* TextValue.swift */,
 				BC10682529F947E8005C5704 /* ProgressBarCell.swift */,
+				BC6576392A0A68F20063066C /* DiagonalView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				BC983F17298413A4006B91F1 /* PokemonAPI.swift in Sources */,
 				BC7508FA29A90F6400297399 /* TypeTag.swift in Sources */,
 				BC983F1A298413A4006B91F1 /* UIColor+Extension.swift in Sources */,
+				BC65763A2A0A68F20063066C /* DiagonalView.swift in Sources */,
 				BC983F1B298413A4006B91F1 /* CGFloat+Tokens.swift in Sources */,
 				BC193E862A054E250010E85F /* PokemonImageAPI.swift in Sources */,
 				BC983F1F298413A4006B91F1 /* HomeCoordinator.swift in Sources */,

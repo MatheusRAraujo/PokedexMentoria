@@ -199,7 +199,7 @@ final class DetailsViewModel {
             return .groundLight
         case .ice:
             return .iceLight
-        case .iron:
+        case .steel:
             return .steelLight
         case .normal:
             return .normalLight

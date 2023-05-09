@@ -55,19 +55,16 @@ enum Types: String {
     case poison
     case psychic
     case rock
-    case iron
+    case steel
     case water
     
     var typeName: String {
-        if self == .iron {
-            return "Stell"
-        }
         return rawValue.capitalized
     }
     
     var textColor: UIColor {
         switch self {
-        case .electric, .iron, .ice, .ground:
+        case .electric, .steel, .ice, .ground:
             return .black
         default:
             return .white
@@ -100,7 +97,7 @@ enum Types: String {
             return .groundMedium
         case .ice:
             return .iceMedium
-        case .iron:
+        case .steel:
             return .steelMedium
         case .normal:
             return .normalMedium
