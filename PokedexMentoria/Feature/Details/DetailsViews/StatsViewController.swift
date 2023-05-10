@@ -22,8 +22,8 @@ final class StatsViewController: UIViewController {
     }()
     
     // MARK: - Variables
-    
     var stats: [BaseStats] = []
+    private let heightForRow: CGFloat = 55
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -41,7 +41,6 @@ final class StatsViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
-    
 }
 
 extension StatsViewController: UITableViewDataSource {
@@ -60,8 +59,7 @@ extension StatsViewController: UITableViewDataSource {
 
 extension StatsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        UITableView.automaticDimension
-        return 55
+        heightForRow
     }
     
     public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

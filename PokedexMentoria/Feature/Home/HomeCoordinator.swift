@@ -17,12 +17,6 @@ final class HomeCoordinator: Coordinator {
         homeViewController.homeCoordinatorDelegate = self
         self.viewController = homeViewController
         let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        
-//        UINavigationBar.appearance().translucent = false
-//         UINavigationBar.appearance().barTintColor = UIColor(rgba: "#2c8eb5")
-//             UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-//                UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        
         self.navigationController = homeNavigationController
         return homeNavigationController
     }
