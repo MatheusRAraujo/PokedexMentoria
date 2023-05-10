@@ -37,20 +37,6 @@ struct BaseStats {
     }
 
     var color: UIColor {
-//        switch stat {
-//        case .hp:
-//            return .green
-//        case .attack:
-//            return .red
-//        case .defense:
-//            return .blue
-//        case .specialAttack:
-//            return .orange
-//        case .specialDefense:
-//            return .purple
-//        case .speed:
-//            return .yellow
-//        }
         switch value {
         case ...59:
               return .lowStats
@@ -69,13 +55,6 @@ struct BaseStats {
 }
 
 extension UIColor {
-//    static let veryLowStatus = UIColor(red: 250, green: 0, blue: 0) // < 59
-////    static let lowStatus = UIColor(red: 255, green: 89, blue: 89) // 60 ... 69
-//    static let mediumLowStats = UIColor(red: 240, green: 128, blue: 48) // 70 ... 79
-//    static let mediumStats = UIColor(red: 248, green: 144, blue: 88) // 80 ... 89
-//    static let mediumHighStats = UIColor(red: 238, green: 205, blue: 49) // 90 .. 99
-//    static let highStats = UIColor(red: 167, green: 219, blue: 141) // 100 .. 119
-//    static let veryHightStats = UIColor(red: 120, green: 200, blue: 80) // 120 >
     
     // <59
     static let lowStats = UIColor(red: 255, green: 0, blue: 0)
