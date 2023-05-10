@@ -9,6 +9,25 @@ import UIKit
 
 final class DiagonalView: UIView {
     
+//    func makeDraw(color: UIColor) {
+//        self.color = color
+//        draw(.zero)
+//    }
+    
+    init(color: UIColor) {
+        self.color = color
+        super.init(frame: .zero)
+        self.backgroundColor = .clear
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        nil
+    }
+    
+    var color: UIColor = .clear
+    
     override func draw(_ rect: CGRect) {
         // tamanho da view
         let screenSize = self.bounds.size
@@ -27,7 +46,7 @@ final class DiagonalView: UIView {
         path.close()
         
         // pinta o interior
-        UIColor.red.set()
+        color.set()
         path.fill()
     }
     
