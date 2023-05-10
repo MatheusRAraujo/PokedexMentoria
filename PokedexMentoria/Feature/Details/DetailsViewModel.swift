@@ -185,7 +185,7 @@ final class DetailsViewModel {
             return .eletricLight
         case .fairy:
             return .fairyLight
-        case .figthing:
+        case .fighting:
             return .fightingLight
         case .fire:
             return .fireLight
@@ -231,7 +231,7 @@ final class DetailsViewModel {
             return .eletricLight
         case .fairy:
             return .fairyLight
-        case .figthing:
+        case .fighting:
             return .fightingLight
         case .fire:
             return .fireLight
@@ -257,8 +257,6 @@ final class DetailsViewModel {
             return .rockLight
         case .water:
             return .waterLight
-        default:
-            return .white
         }
     }
 }

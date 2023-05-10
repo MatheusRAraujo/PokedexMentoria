@@ -44,7 +44,7 @@ enum Types: String {
     case dragon
     case electric
     case fairy
-    case figthing
+    case fighting
     case fire
     case flying
     case ghost
@@ -83,7 +83,7 @@ enum Types: String {
             return .eletricMedium
         case .fairy:
             return .fairyMedium
-        case .figthing:
+        case .fighting:
             return .fightingMedium
         case .fire:
             return .fireMedium

@@ -106,7 +106,7 @@ class DetailsViewController: UIViewController {
             pokemonImage.widthAnchor.constraint(equalToConstant: imageSize),
             pokemonImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            detailsPageView.topAnchor.constraint(equalTo: pokemonImage.bottomAnchor),
+            detailsPageView.topAnchor.constraint(equalTo: pokemonImage.bottomAnchor, constant: 40),
             detailsPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             detailsPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             detailsPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

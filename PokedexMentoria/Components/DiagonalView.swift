@@ -9,11 +9,6 @@ import UIKit
 
 final class DiagonalView: UIView {
     
-//    func makeDraw(color: UIColor) {
-//        self.color = color
-//        draw(.zero)
-//    }
-    
     init(color: UIColor) {
         self.color = color
         super.init(frame: .zero)
