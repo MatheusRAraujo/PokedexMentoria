@@ -215,4 +215,50 @@ final class DetailsViewModel {
             return .white
         }
     }
+    
+    var secondBackgroundColor: UIColor? {
+        if pokemonTypes.count < 2 {
+            return nil
+        }
+        switch pokemonTypes[1] {
+        case .bug:
+            return .bugLight
+        case .dark:
+            return .darkLight
+        case .dragon:
+            return .dragonLight
+        case .electric:
+            return .eletricLight
+        case .fairy:
+            return .fairyLight
+        case .figthing:
+            return .fightingLight
+        case .fire:
+            return .fireLight
+        case .flying:
+            return .flyingLight
+        case .ghost:
+            return .ghostLight
+        case .grass:
+            return .grassLight
+        case .ground:
+            return .groundLight
+        case .ice:
+            return .iceLight
+        case .steel:
+            return .steelLight
+        case .normal:
+            return .normalLight
+        case .poison:
+            return .poisonLight
+        case .psychic:
+            return .psychicLight
+        case .rock:
+            return .rockLight
+        case .water:
+            return .waterLight
+        default:
+            return .white
+        }
+    }
 }

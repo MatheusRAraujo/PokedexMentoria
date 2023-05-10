@@ -33,10 +33,9 @@ final class DiagonalView: UIView {
         let screenSize = self.bounds.size
         let origin = self.bounds.origin
         
-        // Cria os pontos que limitam o "desenho"
-        let p1 = CGPoint(x: origin.x + screenSize.width, y: origin.y)
+        let p1 = CGPoint(x: origin.x, y: origin.y)
         let p2 = CGPoint(x: p1.x, y: p1.y + screenSize.height)
-        let p3 = CGPoint(x: origin.x, y: p2.y)
+        let p3 = CGPoint(x: origin.x + screenSize.width, y: p1.y )
         
         // cria o caminho ligando os pontos
         let path = UIBezierPath()

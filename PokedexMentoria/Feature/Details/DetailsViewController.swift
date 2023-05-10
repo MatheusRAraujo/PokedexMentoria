@@ -42,13 +42,6 @@ class DetailsViewController: UIViewController {
         return imageView
     }()
     
-//    private lazy var diagonalView: DiagonalView = {
-//        let view = DiagonalView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.backgroundColor = .clear
-//        return view
-//    }()
-    
     private lazy var detailsPageViewController: TabBarComponent = {
         let vc1 = PokemonInfoViewController()
         viewModel.infoDelegate = vc1
@@ -81,35 +74,21 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
         makeLayout()
     }
     
     private func makeLayout() {
-//        view.addSubview(diagonalView)
         view.addSubview(pokemonName)
         view.addSubview(pokemonNumber)
         view.addSubview(typesStackView)
         view.addSubview(pokemonImage)
         view.addSubview(detailsPageView)
         
-//        view.addSubview(pokemonName)
-//        view.addSubview(pokemonNumber)
-//        view.addSubview(typesStackView)
-//        view.addSubview(pokemonImage)
-//        view.addSubview(detailsPageView)
-        
         addChild(detailsPageViewController)
         
         let imageSize: CGFloat = view.bounds.size.width / 2
         
         NSLayoutConstraint.activate([
-            
-//            diagonalView.topAnchor.constraint(equalTo: view.topAnchor),
-//            diagonalView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            diagonalView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            diagonalView.heightAnchor.constraint(equalToConstant: 400),
-
             pokemonName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .topSpacing),
             pokemonName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .horizontalSpacing),
             pokemonName.heightAnchor.constraint(equalToConstant: .labelHeight),
@@ -131,28 +110,6 @@ class DetailsViewController: UIViewController {
             detailsPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             detailsPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             detailsPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            
-//            pokemonName.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .topSpacing),
-//            pokemonName.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .horizontalSpacing),
-//            pokemonName.heightAnchor.constraint(equalToConstant: .labelHeight),
-//
-//            pokemonNumber.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: .topSpacing),
-//            pokemonNumber.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -.horizontalSpacing),
-//            pokemonNumber.heightAnchor.constraint(equalToConstant: .labelHeight),
-//
-//            typesStackView.topAnchor.constraint(equalTo: pokemonName.bottomAnchor, constant: 5),
-//            typesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: .horizontalSpacing),
-//            typesStackView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -.horizontalSpacing),
-//
-//            pokemonImage.topAnchor.constraint(equalTo: typesStackView.bottomAnchor, constant: .labelsToViewSpacing),
-//            pokemonImage.heightAnchor.constraint(equalToConstant: imageSize),
-//            pokemonImage.widthAnchor.constraint(equalToConstant: imageSize),
-//            pokemonImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//
-//            detailsPageView.topAnchor.constraint(equalTo: pokemonImage.bottomAnchor, constant: 20),
-//            detailsPageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            detailsPageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            detailsPageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -173,18 +130,18 @@ extension DetailsViewController: DetailsViewDelegate {
                 self.typesStackView.addArrangedSubview(typeCard)
             }
             
-            let diagonalView = DiagonalView(color: .blue)
-
-            self.view.addSubview(diagonalView)
-            self.view.sendSubviewToBack(diagonalView)
-            
-            NSLayoutConstraint.activate([
-                diagonalView.topAnchor.constraint(equalTo: self.view.topAnchor),
-                diagonalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                diagonalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-                diagonalView.bottomAnchor.constraint(equalTo: self.detailsPageView.topAnchor),
-            ])
-            
+            if let secondColor = self.viewModel.secondBackgroundColor {
+                let diagonalView = DiagonalView(color: secondColor)
+                self.view.addSubview(diagonalView)
+                self.view.sendSubviewToBack(diagonalView)
+                
+                NSLayoutConstraint.activate([
+                    diagonalView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                    diagonalView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                    diagonalView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                    diagonalView.bottomAnchor.constraint(equalTo: self.detailsPageView.topAnchor),
+                ])
+            }
         }
     }
     
