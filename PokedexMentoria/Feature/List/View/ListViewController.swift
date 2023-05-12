@@ -57,8 +57,7 @@ final class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id: Int = indexPath.row + 1
-        viewModel.detailsWithIndex(id)
+        viewModel.detailsWithIndex(indexPath.row)
     }
 }
 

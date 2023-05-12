@@ -8,9 +8,7 @@
 import UIKit
 
 class ListViewCell: UITableViewCell {
-    
-    static let identifier = "listIdentifier"
-    
+
     private lazy var numberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

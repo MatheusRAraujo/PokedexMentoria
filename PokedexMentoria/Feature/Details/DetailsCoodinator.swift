@@ -25,6 +25,7 @@ final class DetailsCoordinator: Coordinator {
         let viewModel = DetailsViewModel(pokemonNumber: pokemonNumber)
         viewModel.delegate = self
         let detailsVC = DetailsViewController(viewModel: viewModel)
+        viewModel.detailsDelegate = detailsVC
         return detailsVC
     }
     

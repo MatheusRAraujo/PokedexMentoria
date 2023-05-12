@@ -1,5 +1,5 @@
 //
-//  PokemonInfoViewController.swift
+//  InfoViewController.swift
 //  PokedexMentoria
 //
 //  Created by Matheus Rodrigues Araujo on 14/04/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PokemonInfoViewController: UIViewController {
+final class InfoViewController: UIViewController {
     
     private lazy var specieLabel: UILabel = {
         let label = UILabel()
@@ -77,7 +77,7 @@ final class PokemonInfoViewController: UIViewController {
     }
 }
 
-extension PokemonInfoViewController: InfoDetailsViewDelegate {
+extension InfoViewController: InfoDetailsViewDelegate {
     func setUpSpecieInfo(pokedexEntry: String, specieName: String) {
         pokedexEntryLabel.text = pokedexEntry
         specieLabel.text = specieName

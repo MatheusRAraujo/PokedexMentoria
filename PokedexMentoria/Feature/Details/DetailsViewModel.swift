@@ -56,7 +56,6 @@ final class DetailsViewModel {
                     self.infoDelegate?.setUpInfos(height: self.height, weight: self.weight)
                     self.statsDelegate?.setUpStats(baseStatus: self.baseStats)
                 }
-                print(self.pokemonModel)
             case .failure(let error):
                 print("Erro no details: \(error)")
             }
@@ -64,13 +63,11 @@ final class DetailsViewModel {
         
         network.fetch(request: PokemonAPI.pokemonSpecies(id: pokemonNumber)) { [weak self] (result: Result<PokemonSpeciesModel, Error>) in
             guard let self else { return }
-            print("id is: \(self.pokemonNumber)")
             switch result {
             case .success(let pokemonSpeciesModel):
                 DispatchQueue.main.async {
                     self.pokemonSpecieModel = pokemonSpeciesModel
                     self.infoDelegate?.setUpSpecieInfo(pokedexEntry: self.pokedexEntry, specieName: self.specieName)
-                    print(pokemonSpeciesModel)
                 }
             case .failure(let error):
                 print("Erro no details: \(error)")
@@ -78,7 +75,7 @@ final class DetailsViewModel {
         }
         
         network.fetchImage(request: PokemonImageAPI.image(id: pokemonNumber)) { [weak self] (result: Result<Data, Error>) in
-            guard let self else {return}
+            guard let self else { return }
             switch result {
             case .success(let imageData):
                 DispatchQueue.main.async {

@@ -8,9 +8,7 @@
 import UIKit
 
 final class ProgressBarCell: UITableViewCell {
-    
-    static let identifier = "progress_bar_cell"
-    
+        
     private lazy var title: UILabel = {
         let label = UILabel()
         label.textAlignment = .left

@@ -28,7 +28,6 @@ final class ListCoordinator: Coordinator {
 
 extension ListCoordinator: ListCoordinatorDelegate {
     func goToDetailsWithIndex(_ index: Int) {
-        print("indo pra tela de detalhes com o index: \(index)")
         let coordinator = DetailsCoordinator(pokemonNumber: index)
         route(from: coordinator, present: .push)
     }

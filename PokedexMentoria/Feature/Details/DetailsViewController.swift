@@ -7,15 +7,14 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+final class DetailsViewController: UIViewController {
     
-    let viewModel: DetailsViewModel
+    private let viewModel: DetailsViewModel
     
     private lazy var pokemonName: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: .nameFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
@@ -35,7 +34,7 @@ class DetailsViewController: UIViewController {
     }()
     
     private lazy var pokemonImage: UIImageView = {
-        let image = UIImage(systemName: "house.fill")
+        let image = UIImage(systemName: "photo.fill")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -43,7 +42,7 @@ class DetailsViewController: UIViewController {
     }()
     
     private lazy var detailsPageViewController: TabBarComponent = {
-        let vc1 = PokemonInfoViewController()
+        let vc1 = InfoViewController()
         viewModel.infoDelegate = vc1
         let vc2 = PokemonAbilitiesViewController(abilities: [AbilityModel(ability: AbilityNameModel(name: "placeholder"), isHidden: false)])
         viewModel.abilitiesDelegate = vc2
@@ -62,14 +61,12 @@ class DetailsViewController: UIViewController {
     
     init(viewModel: DetailsViewModel) {
         self.viewModel = viewModel
-        
         super.init(nibName: nil, bundle: nil)
-        viewModel.detailsDelegate = self
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        return nil
+        nil
     }
     
     override func viewDidLoad() {
@@ -103,7 +100,7 @@ class DetailsViewController: UIViewController {
 
             pokemonImage.topAnchor.constraint(equalTo: typesStackView.bottomAnchor, constant: .labelsToViewSpacing),
             pokemonImage.heightAnchor.constraint(equalToConstant: imageSize),
-            pokemonImage.widthAnchor.constraint(equalToConstant: imageSize),
+            pokemonImage.widthAnchor.constraint(equalTo: pokemonImage.heightAnchor),
             pokemonImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             detailsPageView.topAnchor.constraint(equalTo: pokemonImage.bottomAnchor, constant: 40),

@@ -9,8 +9,6 @@ import UIKit
 
 final class PokemonAbilityCell: UITableViewCell {
     
-    static let identifier = "pokemonAbilityCellIdentifier"
-    
     private lazy var abilityNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
