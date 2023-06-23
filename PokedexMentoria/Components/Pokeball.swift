@@ -35,11 +35,12 @@ final class PokeBallView: UIView {
             widthAnchor.constraint(equalTo: heightAnchor)
         ])
     }
-    
+
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.width / 2

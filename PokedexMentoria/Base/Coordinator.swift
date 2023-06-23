@@ -36,7 +36,7 @@ extension Coordinator {
             } else {
                 let feedBack = Feedback(image: UIImage(systemName: "house.fill")!,
                                         title: "Deu ruim",
-                                        text: "quero muito me mat4r!")
+                                        text: "erro em construir a tela")
                showFeedback(feedBack)
             }
         }

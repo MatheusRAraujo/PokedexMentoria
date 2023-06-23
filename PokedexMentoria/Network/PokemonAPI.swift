@@ -13,6 +13,8 @@ enum PokemonAPI: APIRequest {
         switch self {
         case .pokemon(let id):
             return "pokemon/\(id)/"
+        case .pokemonSpecies(let id):
+            return "pokemon-species/\(id)/"
         case .pokemonList:
             return "pokemon?limit=1008"
         }
@@ -25,5 +27,6 @@ enum PokemonAPI: APIRequest {
     }
     
     case pokemon(id: Int)
+    case pokemonSpecies(id: Int)
     case pokemonList
 }

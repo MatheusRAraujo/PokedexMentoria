@@ -30,9 +30,9 @@ class ListViewModel {
                 self.pokemonListModel = pokemonList
                 self.listModelDelegate?.reloadTableView()
             case .failure:
-                let feedBack = Feedback(image: UIImage(systemName: "house.fill")!,
-                                        title: "Deu ruim",
-                                        text: "quero muito me mat4r!")
+                let feedBack = Feedback(image: UIImage(systemName: "nosign")!,
+                                        title: "Algo deu errado.",
+                                        text: "Erro ao recuperar listagem de pokemon")
                 self.coordinatorDelegate?.showFeedback(feedBack)
             }
         }
@@ -70,5 +70,9 @@ class ListViewModel {
         default:
             return .white
         }
+    }
+    
+    func detailsWithIndex(_ index: Int) {
+        coordinatorDelegate?.goToDetailsWithIndex(index + 1)
     }
 }

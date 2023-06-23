@@ -26,7 +26,7 @@ final class HomeCoordinator: Coordinator {
 extension HomeCoordinator: HomeCoordinatorDelegate {
     
     func goToPokemonList() {
-        let coordinator = ListCoodinator()
+        let coordinator = ListCoordinator()
         route(from: coordinator, present: .push)
     }
     

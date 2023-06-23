@@ -26,7 +26,7 @@ final class ListViewController: UIViewController {
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        nil
     }
     
     override func viewDidLoad() {
@@ -56,6 +56,9 @@ final class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.detailsWithIndex(indexPath.row)
+    }
 }
 
 extension ListViewController: UITableViewDataSource {
@@ -80,5 +83,4 @@ extension ListViewController: ListViewDelegate {
             self.tableView.reloadData()
         }
     }
-    
 }
